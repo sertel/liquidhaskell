@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Options - LiquidHaskell</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">LiquidHaskell</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../install/" class="nav-link">Install</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../run/" class="nav-link">Run</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Options</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../specifications/" class="nav-link">Specifications</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../contributing/" class="nav-link">Community</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../develop/" class="nav-link">Developer's Guide</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../run/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../specifications/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#options-and-pragmas" class="nav-link">Options and Pragmas</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#theorem-proving" class="nav-link">Theorem Proving</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#fast-checking" class="nav-link">Fast Checking</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#incremental-checking" class="nav-link">Incremental Checking</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#full-checking-default" class="nav-link">Full Checking (DEFAULT)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#specifying-different-smt-solvers" class="nav-link">Specifying Different SMT Solvers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#short-error-messages" class="nav-link">Short Error Messages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#short-unqualified-module-names" class="nav-link">Short (Unqualified) Module Names</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#disabling-checks-on-functions" class="nav-link">Disabling Checks on Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#totality-check" class="nav-link">Totality Check</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#termination-check" class="nav-link">Termination Check</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#total-haskell" class="nav-link">Total Haskell</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lazy-variables" class="nav-link">Lazy Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#no-measure-fields" class="nav-link">No measure fields</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#prune-unsorted-predicates" class="nav-link">Prune Unsorted Predicates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#case-expansion" class="nav-link">Case Expansion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#higher-order-logic" class="nav-link">Higher order logic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#restriction-to-linear-arithmetic" class="nav-link">Restriction to Linear Arithmetic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#counter-examples-experimental" class="nav-link">Counter examples (Experimental!)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#generating-html-output" class="nav-link">Generating HTML Output</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="options-and-pragmas">Options and Pragmas</h1>
+<p>LiquidHaskell supports several command line options, to configure the
+checking. </p>
+<p>To see all options, run <code>liquid --help</code>. </p>
+<p>Each option can be passed in at the command line, or directly
+added to the source file via a <strong>pragma</strong></p>
+<pre><code class="haskell">    {-@ LIQUID &quot;option-within-quotes&quot; @-}
+</code></pre>
+
+<p>for example, to disable termination checking (see below)</p>
+<pre><code class="haskell">    {-@ LIQUID &quot;--no-termination&quot; @-}
+</code></pre>
+
+<p>You may also put command line options in the environment variable
+<code>LIQUIDHASKELL_OPTS</code>. For example, if you add the line:</p>
+<pre><code>    LIQUIDHASKELL_OPTS=&quot;--diff&quot;
+</code></pre>
+
+<p>to your <code>.bashrc</code> then, by default, all files will be
+<em>incrementally checked</em> unless you run with the overriding
+<code>--full</code> flag (see below).</p>
+<p>Below, we list the various options and what they are used for. </p>
+<h2 id="theorem-proving">Theorem Proving</h2>
+<p>To enable theorem proving, e.g. as <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/tags/reflection.html">described here</a>
+use the option </p>
+<pre><code class="haskell">    {-@ LIQUID &quot;--reflection&quot; @-}
+</code></pre>
+
+<p>To additionally turn on <em>proof by logical evaluation</em> use the option</p>
+<pre><code class="haskell">    {-@ LIQUID &quot;--ple&quot; @-}
+</code></pre>
+
+<p>You can see many examples of proofs by logical evaluation in <code>benchmarks/popl18/ple/pos</code></p>
+<p>This flag is <strong>global</strong> and will symbolically evaluate all the terms that appear in the specifications.</p>
+<p>As an alternative, the <code>liquidinstanceslocal</code> flag has local behavior. <a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/benchmarks/proofautomation/pos/Unification.hs">See</a></p>
+<pre><code>{-@ LIQUID &quot;--ple-local&quot; @-}
+</code></pre>
+
+<p>will only evaluate terms appearing in the specifications
+of the function <code>theorem</code>, in the function <code>theorem</code> is
+annotated for automatic instantiation using the following
+liquid annotation</p>
+<pre><code>{-@ automatic-instances theorem @-}
+</code></pre>
+
+<p>To allow reasoning about function extensionality use the <code>extensionality flag</code>. <a href="https://github.com/ucsd-progsys/liquidhaskell/blob/880c78f94520d76fa13880eac050f21dacb592fd/tests/pos/T1577.hs">See</a></p>
+<pre><code>{-@ LIQUID &quot;--extensionality&quot; @-}
+</code></pre>
+
+<h2 id="fast-checking">Fast Checking</h2>
+<p>The option <code>--fast</code> or <code>--nopolyinfer</code> greatly recudes verification time, can also reduces precision of type checking. 
+It, per module, deactivates inference of refinements during 
+instantiation of polymorphic type variables. 
+It is suggested to use on theorem proving style when reflected 
+functions are trivially refined. </p>
+<h2 id="incremental-checking">Incremental Checking</h2>
+<p>LiquidHaskell supports <em>incremental</em> checking where each run only checks
+the part of the program that has been modified since the previous run.</p>
+<pre><code>    $ liquid --diff foo.hs
+</code></pre>
+
+<p>Each run of <code>liquid</code> saves the file to a <code>.bak</code> file and the <em>subsequent</em> run</p>
+<pre><code>+ does a `diff` to see what has changed w.r.t. the `.bak` file
++ only generates constraints for the `[CoreBind]` corresponding to the
+   changed top-level binders and their transitive dependencies.
+</code></pre>
+<p>The time savings are quite significant. For example:</p>
+<pre><code>    $ time liquid --notermination -i . Data/ByteString.hs &gt; log 2&gt;&amp;1
+
+    real    7m3.179s
+    user    4m18.628s
+    sys     0m21.549s
+</code></pre>
+
+<p>Now if you go and tweak the definition of <code>spanEnd</code> on line 1192 and re-run:</p>
+<pre><code>    $ time liquid -d --notermination -i . Data/ByteString.hs &gt; log 2&gt;&amp;1
+
+    real    0m11.584s
+    user    0m6.008s
+    sys     0m0.696s
+</code></pre>
+
+<p>The diff is only performed against <strong>code</strong>, i.e. if you only change
+specifications, qualifiers, measures, etc. <code>liquid -d</code> will not perform
+any checks. In this case, you may specify individual definitions to verify:</p>
+<pre><code>    $ liquid -b bar -b baz foo.hs
+</code></pre>
+
+<p>This will verify <code>bar</code> and <code>baz</code>, as well as any functions they use.</p>
+<p>If you always want to run a given file with diff-checking, add
+the pragma:</p>
+<pre><code>{-@ LIQUID "--diff" @-}
+</code></pre>
+<h2 id="full-checking-default">Full Checking (DEFAULT)</h2>
+<p>To force LiquidHaskell to check the <strong>whole</strong> file (DEFAULT), use:</p>
+<pre><code>$ liquid --full foo.hs
+</code></pre>
+<p>to the file. This will override any other <code>--diff</code> incantation
+elsewhere (e.g. inside the file.)</p>
+<p>If you always want to run a given file with full-checking, add
+the pragma:</p>
+<pre><code>{-@ LIQUID "--full" @-}
+</code></pre>
+<h2 id="specifying-different-smt-solvers">Specifying Different SMT Solvers</h2>
+<p>By default, LiquidHaskell uses the SMTLIB2 interface for Z3.</p>
+<p>To run a different solver (supporting SMTLIB2) do:</p>
+<pre><code>$ liquid --smtsolver=NAME foo.hs
+</code></pre>
+<p>Currently, LiquidHaskell supports</p>
+<ul>
+<li><a href="http://cvc4.cs.stanford.edu/web/">CVC4</a></li>
+<li><a href="http://mathsat.fbk.eu/download.html">MathSat</a></li>
+</ul>
+<p>To use these solvers, you must install the corresponding binaries
+from the above web-pages into your <code>PATH</code>.</p>
+<p>You can also build and link against the Z3 API (faster but requires more
+dependencies). If you do so, you can use that interface with:</p>
+<pre><code>$ liquid --smtsolver=z3mem foo.hs
+</code></pre>
+<h2 id="short-error-messages">Short Error Messages</h2>
+<p>By default, subtyping error messages will contain the inferred type, the
+expected type -- which is <strong>not</strong> a super-type, hence the error -- and a
+context containing relevant variables and their type to help you understand
+the error. If you don't want the above and instead, want only the
+<strong>source position</strong> of the error use:</p>
+<pre><code>--short-errors
+</code></pre>
+<h2 id="short-unqualified-module-names">Short (Unqualified) Module Names</h2>
+<p>By default, the inferred types will have fully qualified module names.
+To use unqualified names, much easier to read, use:</p>
+<pre><code>--short-names
+</code></pre>
+<h2 id="disabling-checks-on-functions">Disabling Checks on Functions</h2>
+<p>You can <em>disable</em> checking of a particular function (e.g. because it is unsafe,
+or somehow not currently outside the scope of LH) by using the <code>ignore</code> directive.</p>
+<p>For example,</p>
+<pre><code class="haskell">{-@ ignore foo @-}
+</code></pre>
+
+<p>will <em>disable</em> the checking of the code for the top-level binder <code>foo</code>.</p>
+<p>See <code>tests/pos/Ignores.hs</code> for an example.</p>
+<h2 id="totality-check">Totality Check</h2>
+<p>LiquidHaskell proves the absence of pattern match failures.</p>
+<p>For example, the definition</p>
+<pre><code>fromJust :: Maybe a -&gt; a
+fromJust (Just a) = a
+</code></pre>
+<p>is not total and it will create an error message.
+If we exclude <code>Nothing</code> from its domain, for example using the following specification</p>
+<pre><code>{-@ fromJust :: {v:Maybe a | (isJust v)} -&gt; a @-}
+</code></pre>
+<p><code>fromJust</code> will be safe.</p>
+<p>Use the <code>no-totality</code> flag to disable totality checking.</p>
+<pre><code>liquid --no-totality test.hs
+</code></pre>
+<h2 id="termination-check">Termination Check</h2>
+<p>By <strong>default</strong> a termination check is performed on all recursive functions.</p>
+<p>Use the <code>--no-termination</code> option to disable the check</p>
+<pre><code>{-@ LIQUID "--no-termination" @-}
+</code></pre>
+<p>See the [specifications documentation][specifications] for how to write termination 
+specifications.</p>
+<h2 id="total-haskell">Total Haskell</h2>
+<p>LiquidHaskell provides a total Haskell flag that checks both totallity and termination of the program,
+overriding a potential no-termination flag.</p>
+<pre><code>liquid --total-Haskell test.hs
+</code></pre>
+<h2 id="lazy-variables">Lazy Variables</h2>
+<p>A variable can be specified as <code>LAZYVAR</code></p>
+<pre><code>{-@ LAZYVAR z @-}
+</code></pre>
+<p>With this annotation the definition of <code>z</code> will be checked at the points where
+it is used. For example, with the above annotation the following code is SAFE:</p>
+<pre><code>foo   = if x &gt; 0 then z else x
+  where
+    z = 42 `safeDiv` x
+    x = choose 0
+</code></pre>
+<p>By default, all the variables starting with <code>fail</code> are marked as LAZY, to defer
+failing checks at the point where these variables are used.</p>
+<h2 id="no-measure-fields">No measure fields</h2>
+<p>When a data type is refined, Liquid Haskell automatically turns the data constructor fields into measures.
+For example,</p>
+<pre><code>{-@ data L a = N | C {hd :: a, tl :: L a} @-}
+</code></pre>
+<p>will automatically create two measures <code>hd</code> and <code>td</code>.
+To deactivate this automatic measure definition, and speed up verification, you can use the <code>no-measure-fields</code> flag.</p>
+<pre><code>liquid --no-measure-fields test.hs
+</code></pre>
+<h2 id="prune-unsorted-predicates">Prune Unsorted Predicates</h2>
+<p>The <code>--prune-unsorted</code> flag is needed when using <em>measures over specialized instances</em> of ADTs. </p>
+<p>For example, consider a measure over lists of integers</p>
+<pre><code class="haskell">    sum :: [Int] -&gt; Int
+    sum [] = 0
+    sum (x:xs) = 1 + sum xs
+</code></pre>
+
+<p>This measure will translate into strengthening the types of list constructors</p>
+<pre><code>    [] :: {v:[Int] | sum v = 0 }
+    (:) :: x:Int -&gt; xs:[Int] -&gt; {v:[Int] | sum v = x + sum xs}
+</code></pre>
+
+<p>But what if our list is polymorphic <code>[a]</code> and later instantiate to list of ints?
+The workaround we have right now is to strengthen the polymorphic list with the 
+<code>sum</code> information</p>
+<pre><code>    [] :: {v:[a] | sum v = 0 }
+    (:) :: x:a -&gt; xs:[a] -&gt; {v:[a] | sum v = x + sum xs}
+</code></pre>
+
+<p>But for non numeric <code>a</code>s, refinements like <code>x + sum xs</code> are ill-sorted! </p>
+<p>We use the flag <code>--prune-unsorted</code> to prune away unsorted expressions 
+(like <code>x + sum xs</code>) inside refinements.</p>
+<pre><code>    liquid --prune-unsorted test.hs
+</code></pre>
+
+<h2 id="case-expansion">Case Expansion</h2>
+<p>By default LiquidHaskell expands all data constructors to the case statements.
+For example, given the definition</p>
+<pre><code class="haskell">  data F = A1 | A2 | .. | A10
+</code></pre>
+
+<p>LiquidHaskell will expand the code</p>
+<pre><code class="haskell">  case f of {A1 -&gt; True; _ -&gt; False}
+</code></pre>
+
+<p>to </p>
+<pre><code class="haskell">  case f of {A1 -&gt; True; A2 -&gt; False; ...; A10 -&gt; False}
+</code></pre>
+
+<p>This expansion can lead to more precise code analysis
+but it can get really expensive due to code explosion.
+The <code>no-case-expand</code> flag prevents this expansion and keeps the user
+provided cases for the case expression.</p>
+<pre><code>liquid --no-case-expand test.hs
+</code></pre>
+<h2 id="higher-order-logic">Higher order logic</h2>
+<p>The flag <code>--higherorder</code> allows reasoning about higher order functions.</p>
+<h2 id="restriction-to-linear-arithmetic">Restriction to Linear Arithmetic</h2>
+<p>When using <code>z3</code> as the solver, LiquidHaskell allows for non-linear arithmetic:
+division and multiplication on integers are interpreted by <code>z3</code>. To treat division
+and multiplication as uninterpreted functions use the <code>linear</code> flag</p>
+<pre><code>liquid --linear test.hs
+</code></pre>
+<h2 id="counter-examples-experimental">Counter examples (Experimental!)</h2>
+<p>When given the <code>--counter-examples</code> flag, LiquidHaskell will attempt to produce
+counter-examples for the type errors it discovers. For example, see
+<a href="https://github.com/ucsd-progsys/liquidhaskell/blob/master/tests/neg/ListElem.hs">tests/neg/ListElem.hs</a></p>
+<pre><code>% liquid --counter-examples tests/neg/ListElem.hs
+
+...
+
+tests/neg/ListElem.hs:12:1-8: Error: Liquid Type Mismatch
+
+ 12 | listElem _ []      = False
+      ^^^^^^^^
+
+   Inferred type
+     VV : {VV : Bool | VV == True}
+     VV = True
+
+   not a subtype of Required type
+     VV : {VV : Bool | Prop VV &lt;=&gt; Set_mem ?b (listElts ?a)}
+
+   In Context
+     ?a : {?a : [a] | len ?a &gt;= 0}
+     ?a = [1]
+
+     ?b : a
+     ?b = 0
+</code></pre>
+
+<p>The <code>--counter-examples</code> flag requires that each type in the context be
+an instance of <code>GHC.Generics.Generic</code> or <code>Test.Targetable.Targetable</code>
+(provided as part of LiquidHaskell).  LiquidHaskell cannot generate
+counter-examples for polymorphic types, but will try (naively) to
+instantiate type variables with <code>Int</code> (as seen in the example above).</p>
+<h2 id="generating-html-output">Generating HTML Output</h2>
+<p>The system produces HTML files with colorized source, and mouseover
+inferred type annotations, which are quite handy for debugging failed
+verification attempts.</p>
+<ul>
+<li>
+<p><strong>Regular Haskell</strong> When you run: <code>liquid foo.hs</code> you get a file
+  <code>foo.hs.html</code> with the annotations. The coloring is done using
+  <code>hscolour</code>.</p>
+</li>
+<li>
+<p><strong>Markdown + Literate Haskell</strong> You can also feed in literate haskell files
+  where the comments are in <a href="http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html">Pandoc markdown</a>.
+  In this case, the tool will run <code>pandoc</code> to generate the HTML from the comments.
+  Of course, this requires that you have <code>pandoc</code> installed as a binary on
+  your system. If not, <code>hscolour</code> is used to render the HTML.</p>
+</li>
+</ul>
+<p>It is also possible to generate <em>slide shows</em> from the above.
+  See the <a href="docs/slides">slides directory</a> for an example.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

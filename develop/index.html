@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Developer's Guide - LiquidHaskell</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">LiquidHaskell</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../install/" class="nav-link">Install</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../run/" class="nav-link">Run</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../options/" class="nav-link">Options</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../specifications/" class="nav-link">Specifications</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../contributing/" class="nav-link">Community</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Developer's Guide</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../contributing/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#developers-guide" class="nav-link">Developers' Guide</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#how-to-run-regression-tests" class="nav-link">How To Run Regression Tests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#how-to-profile" class="nav-link">How to Profile</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#how-to-get-stack-traces-on-exceptions" class="nav-link">How to Get Stack Traces On Exceptions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#working-with-submodules" class="nav-link">Working With Submodules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#generating-performance-reports" class="nav-link">Generating Performance Reports</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#configuration-management" class="nav-link">Configuration Management</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#updating-ghc-versions" class="nav-link">Updating GHC Versions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="developers-guide">Developers' Guide</h1>
+<p>Here are some notes that are generally useful for people <em>developing</em> LH itself.</p>
+<h2 id="how-to-run-regression-tests">How To Run Regression Tests</h2>
+<p>You can run all the tests by</p>
+<pre><code>$ stack test
+</code></pre>
+<p>To pass in specific parameters and run a subset of the tests </p>
+<pre><code>$ stack test liquidhaskell --fast  --test-arguments "--liquid-opts --no-termination -p Unit"
+</code></pre>
+<p>Or your favorite number of threads, depending on cores etc.</p>
+<p>You can directly extend and run the tests by modifying</p>
+<pre><code>tests/test.hs
+</code></pre>
+<h2 id="how-to-profile">How to Profile</h2>
+<ol>
+<li>
+<p>Build with profiling on</p>
+<p><code>$ stack build liquidhaskell --fast --profile</code></p>
+</li>
+<li>
+<p>Run with profiling</p>
+<p><code>$ stack exec -- liquid range.hs +RTS -hc -p
+$ stack exec -- liquid range.hs +RTS -hy -p</code></p>
+<p>Followed by this which shows the stats file</p>
+<p><code>$ more liquid.prof</code></p>
+<p>or by this to see the graph</p>
+<p><code>$ hp2ps -e8in -c liquid.hp
+$ gv liquid.ps</code></p>
+<p>etc.</p>
+</li>
+</ol>
+<h2 id="how-to-get-stack-traces-on-exceptions">How to Get Stack Traces On Exceptions</h2>
+<ol>
+<li>
+<p>Build with profiling on</p>
+<p><code>$ stack build liquidhaskell --fast --profile</code></p>
+</li>
+<li>
+<p>Run with backtraces</p>
+<p><code>$ liquid +RTS -xc -RTS foo.hs</code></p>
+<p><code>stack exec -- liquid List00.hs +RTS -p -xc -RTS</code></p>
+</li>
+</ol>
+<h2 id="working-with-submodules">Working With Submodules</h2>
+<ul>
+<li>
+<p>To update the <code>liquid-fixpoint</code> submodule, run</p>
+<p><code>cd ./liquid-fixpoint
+git fetch --all
+git checkout &lt;remote&gt;/&lt;branch&gt;
+cd ..</code></p>
+</li>
+</ul>
+<p>This will update <code>liquid-fixpoint</code> to the latest version on <code>&lt;branch&gt;</code>
+   (usually <code>master</code>) from <code>&lt;remote&gt;</code> (usually <code>origin</code>).</p>
+<ul>
+<li>
+<p>After updating <code>liquid-fixpoint</code>, make sure to include this change in a
+   commit! Running</p>
+<p><code>git add ./liquid-fixpoint</code></p>
+</li>
+</ul>
+<p>will save the current commit hash of <code>liquid-fixpoint</code> in your next commit
+   to the <code>liquidhaskell</code> repository.</p>
+<ul>
+<li>
+<p>For the best experience, <strong>don't</strong> make changes directly to the
+   <code>./liquid-fixpoint</code> submodule, or else git may get confused. Do any
+   <code>liquid-fixpoint</code> development inside a separate clone/copy elsewhere.</p>
+</li>
+<li>
+<p>If something goes wrong, run</p>
+<p><code>rm -r ./liquid-fixpoint
+git submodule update --init</code></p>
+</li>
+</ul>
+<p>to blow away your copy of the <code>liquid-fixpoint</code> submodule and revert to the
+   last saved commit hash.</p>
+<ul>
+<li>
+<p>Want to work fully offline? git lets you add a local directory as a remote.
+   Run</p>
+<p><code>cd ./liquid-fixpoint
+git remote add local /path/to/your/fixpoint/clone
+cd ..</code></p>
+</li>
+</ul>
+<p>Then to update the submodule from your local clone, you can run</p>
+<pre><code>```
+cd ./liquid-fixpoint
+git fetch local
+git checkout local/&lt;branch&gt;
+cd ..
+```
+</code></pre>
+<h2 id="generating-performance-reports">Generating Performance Reports</h2>
+<p><strong>DEPRECATED</strong></p>
+<p>We have set up infrastructure to generate performance reports using <a href="https://github.com/nomeata/gipeda">Gipeda</a>.</p>
+<p>Gipeda will generate a static webpage that tracks the performance improvements
+and regressions between commits. To generate the site, first ensure you have the
+following dependencies available:</p>
+<ul>
+<li>Git</li>
+<li>Cabal &gt;= 1.18</li>
+<li>GHC</li>
+<li>Make</li>
+<li>Bash (installed at <code>/bin/bash</code>)</li>
+</ul>
+<p>After ensuring all dependencies are available, from the Liquid Haskell
+directory, execute:</p>
+<pre><code>cd scripts/performance
+./deploy-gipeda.bash
+</code></pre>
+<p>This will download and install all the relevant repositories and files. Next, to
+generate the performance report, use the <code>generate-site.bash</code> script. This script
+has a few options:</p>
+<ul>
+<li><code>-s [hash]</code>: Do not attempt to generate performance reports for any commit
+older than the commit specified by the entered git hash</li>
+<li><code>-e [hash]</code>: Do not attempt to generate performance reports for any commit
+newer than the commit specified by the entered git hash</li>
+<li><code>-f</code>: The default behavior of <code>generate-site.bash</code> is to first check if logs
+have been created for a given hash. If logs already exist, <code>generate-site.bash</code>
+will not recreate them. Specify this option to skip this check and regenerate
+all logs.</li>
+</ul>
+<p>You should expect this process to take a very long time. <code>generate-site.bash</code>
+will compile each commit, then run the entire test suite and benchmark suite
+for each commit. It is suggested to provide a manageable range to <code>generate-site.bash</code>:</p>
+<pre><code>./generate-site.bash -s [starting hash] -e [ending hash]
+</code></pre>
+<p>...will generate reports for all commits between (inclusive) [starting hash]
+and [ending hash].</p>
+<pre><code>./generate-site.bash -s [starting hash]
+</code></pre>
+<p>... will generate reports for all commits newer than [starting hash]. This command
+can be the basis for some automated report generation process (i.e. a cron job).</p>
+<p>Finally, to remove the Gipeda infrastructure from your computer, you may execute:</p>
+<pre><code>./cleanup-gipeda.bash
+</code></pre>
+<p>...which will remove any files created by <code>deploy-gipeda.bash</code> and <code>generate-site.bash</code>
+from your computer.</p>
+<h2 id="configuration-management">Configuration Management</h2>
+<p>It is very important that the version of Liquid Haskell be maintained properly.</p>
+<p>Suppose that the current version of Liquid Haskell is <code>A.B.C.D</code>:</p>
+<ul>
+<li>
+<p>After a release to hackage is made, if any of the components <code>B</code>, <code>C</code>, or <code>D</code> are missing, they shall be added and set to <code>0</code>. Then the <code>D</code> component of Liquid Haskell shall be incremented by <code>1</code>. The version of Liquid Haskell is now <code>A.B.C.(D + 1)</code></p>
+</li>
+<li>
+<p>The first time a new function or type is exported from Liquid Haskell, if any of the components <code>B</code>, or <code>C</code> are missing, they shall be added and set to <code>0</code>. Then the <code>C</code> component shall be incremented by <code>1</code>, and the <code>D</code> component shall stripped. The version of Liquid Haskell is now <code>A.B.(C + 1)</code></p>
+</li>
+<li>
+<p>The first time the signature of an exported function or type is changed, or an exported function or type is removed (this includes functions or types that Liquid Haskell re-exports from its own dependencies), if the <code>B</code> component is missing, it shall be added and set to <code>0</code>. Then the <code>B</code> component shall be incremented by <code>1</code>, and the <code>C</code> and <code>D</code> components shall be stripped. The version of Liquid Haskell is now <code>A.(B + 1)</code></p>
+</li>
+<li>
+<p>The <code>A</code> component shall be updated at the sole discretion of the project owners.</p>
+</li>
+</ul>
+<h2 id="updating-ghc-versions">Updating GHC Versions</h2>
+<p>Here's a script to generate the diff for the <code>desugar</code> modules.</p>
+<pre><code>export GHCSRC=$HOME/Documents/ghc
+
+# Checkout GHC-8.2.2
+(cd $GHCSRC &amp;&amp; git checkout ghc-8.2.2 &amp;&amp; git pull)
+
+# make a patch
+diff -ur $GHCSRC/compiler/deSugar src/Language/Haskell/Liquid/Desugar &gt; liquid.patch
+
+# Checkout GHC-8.4.3
+(cd $GHCSRC &amp;&amp; git checkout ghc-8.2.2 &amp;&amp; git pull)
+
+# Copy GHC desugarer to temporary directory
+cp -r $GHCSRC/compiler/deSugar .
+
+# Patch
+(cd deSugar &amp;&amp; patch -p5 --merge --ignore-whitespace &lt; ../liquid.patch)
+
+# Copy stuff over
+for i in src/Language/Haskell/Liquid/Desugar/*.*; do j=$(basename $i); echo $j; cp deSugar/$j src/Language/Haskell/Liquid/Desugar; done
+</code></pre>
+
+<p>Here's the magic diff that we did at some point that we keep bumping up to new GHC versions:</p>
+<p>https://github.com/ucsd-progsys/liquidhaskell/commit/d380018850297b8f1878c33d0e4c586a1fddc2b8#diff-3644b76a8e6b3405f5492d8194da3874R224 </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Install - LiquidHaskell</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">LiquidHaskell</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Install</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../run/" class="nav-link">Run</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../options/" class="nav-link">Options</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../specifications/" class="nav-link">Specifications</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../contributing/" class="nav-link">Community</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../develop/" class="nav-link">Developer's Guide</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../run/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#installing-liquidhaskell" class="nav-link">Installing LiquidHaskell</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#1-install-smt-solver" class="nav-link">1. Install SMT Solver</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2a-ghc-compiler-plugin" class="nav-link">2a. GHC Compiler Plugin</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2b-legacy-binary" class="nav-link">2b. (Legacy) Binary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#usage-with-nix" class="nav-link">Usage with Nix</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="installing-liquidhaskell">Installing LiquidHaskell</h1>
+<p>To run LiquidHaskell you need to install:</p>
+<ol>
+<li>
+<p>An SMT solver</p>
+</li>
+<li>
+<p>LH itself as one of:
+    a. A GHC compiler plugin
+    b. A standalone binary</p>
+</li>
+</ol>
+<p>We <strong>strongly recommend</strong> the [plugin][lh-plugin-demo], the binary is left for backwards compatibility.</p>
+<p>You can install the <code>liquid</code> binary via package manager <em>or</em> source.</p>
+<h2 id="1-install-smt-solver">1. Install SMT Solver</h2>
+<p>Download and install <em>at least one</em> of</p>
+<ul>
+<li><a href="https://github.com/Z3Prover/z3/releases">Z3</a> or <a href="https://www.microsoft.com/en-us/download/details.aspx?id=52270">Microsoft official binary</a></li>
+<li><a href="http://cvc4.cs.stanford.edu/web/">CVC4</a></li>
+<li><a href="http://mathsat.fbk.eu/download.html">MathSat</a></li>
+</ul>
+<p><strong>Note:</strong> The SMT solver binary should be on your <code>PATH</code>; LiquidHaskell will execute it as a child process.</p>
+<h2 id="2a-ghc-compiler-plugin">2a. GHC Compiler Plugin</h2>
+<p><strong>TODO: Add instructions here</strong></p>
+<h2 id="2b-legacy-binary">2b. (Legacy) Binary</h2>
+<p>You can install the <code>liquid</code> binary via package manager <em>or</em> source.</p>
+<h3 id="via-package-manager">Via Package Manager</h3>
+<p>The <code>liquid</code> executable is provided as part of a standalone,
+battery-included package called <code>liquid-platform</code>.</p>
+<p>Simply do:</p>
+<pre><code>cabal install liquid-platform
+</code></pre>
+<p>We are working to put <code>liquid</code> on <code>stackage</code>.</p>
+<p>You can designate a specific version of LiquidHaskell to
+ensure that the correct GHC version is in the environment. 
+As an example,</p>
+<pre><code>cabal install liquid-platform-0.9.0.0
+</code></pre>
+<h3 id="build-from-source">Build from Source</h3>
+<p>If you want the most recent version, you can build from source as follows,
+either using <code>stack</code> (recommended) or <code>cabal</code>. In either case:</p>
+<ol>
+<li>
+<p><em>recursively</em> <code>clone</code> the repo </p>
+<p>git clone --recursive https://github.com/ucsd-progsys/liquidhaskell.git
+cd liquidhaskell</p>
+</li>
+<li>
+<p><code>build</code> the package with <a href="https://github.com/commercialhaskell/stack/blob/master/doc/install_and_upgrade.md">stack</a> </p>
+<p>stack install liquid-platform</p>
+</li>
+<li>
+<p>or with <a href="https://www.haskell.org/cabal/">cabal</a> </p>
+<p>cabal v2-build liquid-platform</p>
+</li>
+</ol>
+<h3 id="a-note-on-the-ghc_package_path">A note on the GHC_PACKAGE_PATH</h3>
+<p>To work correctly <code>liquid</code> requires access to auxiliary packages
+installed as part of the executable. Therefore, you might need to 
+extend your <code>$GHC_PACKAGE_PATH</code> to have it point to the right location(s). </p>
+<p>Typically the easiest way is to call <code>stack path</code>, which will print 
+a lot of diagnostic output. From that it should be suffient to copy 
+the paths printed as part of <code>ghc-package-path: &lt;some-paths&gt;</code> and 
+extend the <code>GHC_PACKAGE_PATH</code> this way (typically editing your <code>.bashrc</code> 
+to make the changes permanent):</p>
+<pre><code>export GHC_PACKAGE_PATH=$GHC_PACKAGE_PATH:&lt;some-paths&gt;
+</code></pre>
+
+<p>After that, running <code>liquid</code> anywhere from the filesystem should work.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ol>
+<li>
+<p>If you're on Windows, please make sure the SMT solver is installed
+    in the <strong>same</strong> directory as LiquidHaskell itself (i.e. wherever
+    <code>cabal</code> or <code>stack</code> puts your binaries). That is, do:</p>
+<p><code>which liquid</code></p>
+<p>and make sure that <code>z3</code> or <code>cvc4</code> or <code>mathsat</code> are in the <code>PATH</code>
+returned by the above.</p>
+</li>
+<li>
+<p>If you installed via <code>stack</code> and are experiencing path related woes, try:</p>
+<p><code>stack exec -- liquid path/to/file.hs</code></p>
+</li>
+</ol>
+<h2 id="usage-with-nix">Usage with Nix</h2>
+<p><strong>NOTE:</strong> These instructions may be superceded by the <em>plugin-mode</em> which simply uses 
+plain package dependencies to manage all modules.</p>
+<p>Via <a href="https://github.com/Gabriel439">Gabriel Gonzalez</a>, 
+see <a href="https://github.com/ucsd-progsys/liquidhaskell/issues/1099">this issue</a> for details.</p>
+<p>Nix lets you create transient GHC environments with corresponding 
+package databases that may be needed to run LH on specific programs.</p>
+<ol>
+<li>
+<p>Create shell, that lists the extra dependencies: </p>
+</li>
+<li>
+<p>the version of GHC (must be the same as you build LH with, e.g. GHC 8.0.2)</p>
+</li>
+<li>any extra libraries (e.g. <code>vector</code>) </li>
+</ol>
+<pre><code>$ nix-shell --packages 'haskell.packages.ghc802.ghcWithPackages (pkgs: [ pkgs.vector ])'
+</code></pre>
+
+<ol>
+<li>Set environment variables</li>
+</ol>
+<pre><code>[nix-shell]$ eval &quot;$(egrep ^export &quot;$(type -p ghc)&quot;)&quot;
+</code></pre>
+
+<ol>
+<li>Run LH</li>
+</ol>
+<pre><code>[nix-shell]$ liquid examples/search.hs
+</code></pre>
+
+<p>Steps 1-3 can be encapsulated in a single <code>shell.nix</code> e.g. </p>
+<pre><code class="nix">let
+  inherit (import &lt;nixpkgs&gt; { }) fetchFromGitHub;
+
+  nixpkgs = fetchFromGitHub {
+    owner = &quot;NixOS&quot;;
+
+    repo = &quot;nixpkgs&quot;;
+
+    rev = &quot;1715436b75696d9885b345dd8159e12244d0f7f5&quot;;
+    sha256 = &quot;18qp76cppm1yxmzdaak9kcllbypvv22c9g7iaycq2wz0qkka6rx5&quot;;
+  };
+
+  pkgs = import nixpkgs { };
+
+  liquid =
+    pkgs.runCommand &quot;liquidhaskell&quot; { buildInputs = [ pkgs.makeWrapper ]; } ''
+      mkdir -p $out/bin
+      ln -s ${pkgs.haskellPackages.liquidhaskell}/bin/liquid $out/bin
+      wrapProgram $out/bin/liquid --prefix PATH : ${pkgs.z3}/bin
+    '';
+
+  ghc = pkgs.haskellPackages.ghcWithPackages (ps: with ps; [
+          vector
+        ]);
+in
+  pkgs.stdenv.mkDerivation {
+    name = &quot;my-haskell-env-0&quot;;
+    buildInputs = [ ghc liquid ];
+    shellHook = &quot;eval $(egrep ^export ${ghc}/bin/ghc)&quot;;
+  }
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

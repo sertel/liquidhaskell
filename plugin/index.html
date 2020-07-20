@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Run - LiquidHaskell</title>
+        <title>Plugin - LiquidHaskell</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -34,13 +34,16 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Online</a>
                             </li>
                             <li class="navitem">
-                                <a href="../install/" class="nav-link">Install</a>
+                                <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="nav-link">Blog</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Run</a>
+                                <a href="./" class="nav-link">Plugin</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../legacy/" class="nav-link">Legacy</a>
                             </li>
                             <li class="navitem">
                                 <a href="../options/" class="nav-link">Options</a>
@@ -52,7 +55,7 @@
                                 <a href="../contributing/" class="nav-link">Community</a>
                             </li>
                             <li class="navitem">
-                                <a href="../develop/" class="nav-link">Developer's Guide</a>
+                                <a href="../develop/" class="nav-link">Development</a>
                             </li>
                         </ul>
 
@@ -63,12 +66,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../install/" class="nav-link">
+                                <a rel="prev" class="nav-link disabled">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../options/" class="nav-link">
+                                <a rel="next" href="../legacy/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -90,21 +93,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#running-liquidhaskell" class="nav-link">Running LiquidHaskell</a>
+            <li class="nav-item" data-level="1"><a href="#installing-and-running-liquidhaskell" class="nav-link">Installing and Running LiquidHaskell</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#plugin" class="nav-link">Plugin</a>
+            <li class="nav-item" data-level="2"><a href="#benefits" class="nav-link">Benefits</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#installation-and-use" class="nav-link">Installation and Use</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#editor-support" class="nav-link">Editor Support</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#running-the-binary" class="nav-link">Running the Binary</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#running-in-ghci" class="nav-link">Running in GHCi</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -115,48 +114,36 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="running-liquidhaskell">Running LiquidHaskell</h1>
-<h2 id="plugin">Plugin</h2>
-<p><strong>As of Q2 2020, LiquidHaskell is now available as a GHC [compiler plugin][], 
-but we still offer a temporary executable (which uses the plugin internally) 
-to give users enough time to complete migrations to the new system</strong>. </p>
-<p>In plugin mode, you</p>
-<ul>
-<li>Tell GHC to use LH during compilation</li>
-<li>Get refinement type errors during compilation</li>
-<li>Reuse editor tooling across. </li>
-</ul>
-<p>In the rest of the section we will refer to the <code>liquid</code> executable 
-but virtually all the commands shown below are easily portable to 
-the plugin. For a more thorough description of how the source plugin
-works, checkout the <a href="src/Language/Haskell/Liquid/GHC/Plugin/Tutorial.hs">Tutorial</a> 
-documentation.</p>
-<p><strong>We recommend switching to the new compiler plugin as soon as possible.</strong></p>
-<h2 id="editor-support">Editor Support</h2>
-<p><strong>In plugin-mode</strong> you get to automatically reuse all <code>ghc</code> based support for your editor as is.</p>
-<p>To get Liquid Haskell in your editor use the Haskell IDE Engine 
-and activate the liquid plugin. For example, </p>
-<h3 id="vs-code">VS Code</h3>
+<h1 id="installing-and-running-liquidhaskell">Installing and Running LiquidHaskell</h1>
+<p>As of LH version 0.8.10, mirroring GHC-8.10, LiquidHaskell 
+is available as a <a href="https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/extending_ghc.html">GHC compiler plugin</a>. </p>
+<p>(We still offer a <a href="../legacy/">legacy executable</a> which uses 
+the plugin internally, to give users enough time to complete 
+migrations to the new system.)</p>
+<h2 id="benefits">Benefits</h2>
+<p>As a GHC plugin, you simply specify <code>liquidhaskell</code> as one of the dependencies 
+of your project in the cabal file, after which <code>stack</code> or <code>cabal</code> automatically:</p>
 <ol>
-<li>Install the <a href="https://github.com/haskell/haskell-ide-engine">haskell-ide-engine</a></li>
-<li>Enable Haskell Language Server extension from VS Code. </li>
-<li>In the VS Code settings search for <code>liquid</code> and enable the <code>Liquid On</code> extension.</li>
+<li>Install Liquidhaskell </li>
+<li>Tells GHC to use LH during compilation</li>
+<li>Displays refinement type errors during compilation</li>
+<li>Reuses <code>ghci</code>, <code>ghcid</code> and all GHC compatible tooling for your favorite editor. </li>
 </ol>
-<h3 id="emacs">Emacs</h3>
-<p>Use the <a href="https://github.com/ucsd-progsys/liquid-types.el">Flycheck mode</a></p>
-<h3 id="vim">Vim</h3>
-<p>Use the <a href="https://github.com/ucsd-progsys/liquid-types.vim">Syntastic plugin</a></p>
-<h2 id="running-the-binary">Running the Binary</h2>
-<p>To verify a file called <code>foo.hs</code> at type</p>
-<pre><code>$ liquid foo.hs
-</code></pre>
-<h2 id="running-in-ghci">Running in GHCi</h2>
-<p>To run inside <code>ghci</code> e.g. when developing do:</p>
-<pre><code>$ stack ghci liquidhaskell
-ghci&gt; :m +Language.Haskell.Liquid.Liquid
-ghci&gt; liquid ["tests/pos/Abs.hs"]
-</code></pre>
-<p>See <a href="../install/">this file</a> for instructions on running inside a custom <code>nix</code>-shell.</p></div>
+<p><strong>We recommend switching to the new compiler plugin as soon as possible.</strong></p>
+<h2 id="installation-and-use">Installation and Use</h2>
+<p>The following concrete examples show how the source plugin works</p>
+<ul>
+<li><a href="src/Language/Haskell/Liquid/GHC/Plugin/Tutorial.hs">Tutorial documentation</a> </li>
+<li><a href="https://github.com/ucsd-progsys/lh-plugin-demo">Sample package</a></li>
+<li><a href="https://github.com/ucsd-progsys/lh-plugin-demo-client">Sample client package</a></li>
+</ul>
+<p>You can use the <code>.cabal</code>, <code>stack.yaml</code> and <code>cabal.project</code> files in the 
+sample packages to see how to write the equivalent files for your own 
+codebase.</p>
+<h2 id="editor-support">Editor Support</h2>
+<p><strong>In plugin-mode</strong> you get to automatically reuse <strong>all</strong> <code>ghc</code> 
+based support for your editor as is. Again, the sample packages 
+include examples for <code>vscode</code>, <code>vim</code> and <code>emacs</code>.</p></div>
             </div>
         </div>
 

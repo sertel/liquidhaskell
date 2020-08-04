@@ -34,28 +34,36 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Online</a>
+                                <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="nav-link">Blog</a>
+                                <a href="../plugin/" class="nav-link">Install</a>
                             </li>
                             <li class="navitem">
-                                <a href="../plugin/" class="nav-link">Plugin</a>
+                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Play</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Learn <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="dropdown-item">Blog</a>
+</li>
+                                    
+<li>
+    <a href="../options/" class="dropdown-item">Options</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Specifications</a>
+</li>
+                                </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../legacy/" class="nav-link">Legacy</a>
+                                <a href="../contributing/" class="nav-link">Get Involved</a>
                             </li>
                             <li class="navitem">
-                                <a href="../options/" class="nav-link">Options</a>
-                            </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Specifications</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../contributing/" class="nav-link">Community</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../develop/" class="nav-link">Development</a>
+                                <a href="https://github.com/ucsd-progsys/liquidhaskell" class="nav-link"><i class='fa fa-github'></i>&nbsp;Github</a>
                             </li>
                         </ul>
 
@@ -168,6 +176,10 @@
             
             <li class="nav-item" data-level="1"><a href="#rewriting" class="nav-link">Rewriting</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#limitations" class="nav-link">Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
             
@@ -210,11 +222,41 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#termination-metrics" class="nav-link">Termination Metrics</a>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#termination-metrics" class="nav-link">Termination Metrics</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#default-termination-metrics" class="nav-link">Default Termination Metrics</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#synthesis" class="nav-link">Synthesis</a>
+            <li class="nav-item" data-level="2"><a href="#explicit-termination-metrics" class="nav-link">Explicit Termination Metrics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#lexicographic-termination-metrics" class="nav-link">Lexicographic Termination Metrics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mutually-recursive-functions" class="nav-link">Mutually Recursive Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#automatic-termination-metrics" class="nav-link">Automatic Termination Metrics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#disabling-termination-checking" class="nav-link">Disabling Termination Checking</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#synthesis" class="nav-link">Synthesis</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#limitations_1" class="nav-link">Limitations</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -225,8 +267,16 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="writing-specifications">Writing Specifications</h1>
-<h2 id="modules-without-code">Modules WITHOUT code</h2>
+<h1 id="writing-specifications">Writing Specifications<a class="headerlink" href="#writing-specifications" title="Permanent link">&para;</a></h1>
+<p>This section documents how you can actually annotate new or existing code with refinement types, leveraging
+the full power of LiquidHaskell.</p>
+<h2 id="modules-without-code">Modules WITHOUT code<a class="headerlink" href="#modules-without-code" title="Permanent link">&para;</a></h2>
+<p>The following section is slightly different depending on whether you are using the plugin (which you should!)
+or the legacy executable.</p>
+<h3 id="plugin-adding-refinements-for-external-modules">(Plugin) Adding refinements for external modules<a class="headerlink" href="#plugin-adding-refinements-for-external-modules" title="Permanent link">&para;</a></h3>
+<p>See the <a href="../plugin/">plugin</a> section, which cointains a link to a walkthrough document that describes how to add
+refinements for external packages (cfr. <strong>"Providing Specifications for Existing Packages"</strong>)</p>
+<h3 id="legacy-executable-adding-refinements-for-external-modules">(Legacy executable) Adding refinements for external modules<a class="headerlink" href="#legacy-executable-adding-refinements-for-external-modules" title="Permanent link">&para;</a></h3>
 <p>When checking a file <code>target.hs</code>, you can specify an <em>include</em> directory by</p>
 <pre><code>liquid -i /path/to/include/  target.hs
 </code></pre>
@@ -234,7 +284,7 @@
 you <strong>do not have the code</strong>, you can create a <code>.spec</code> file at:</p>
 <pre><code>/path/to/include/Foo/Bar/Baz.spec
 </code></pre>
-<p>See, for example, the contents of</p>
+<p>See, for example, the contents of:</p>
 <ul>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/master/include/Prelude.spec">include/Prelude.spec</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/master/include/Data/List.spec">include/Data/List.spec</a></li>
@@ -247,10 +297,10 @@ you <strong>do not have the code</strong>, you can create a <code>.spec</code> f
 <li>The <code>.spec</code> mechanism is <em>only for external modules</em><em> without code,
   see below for standalone specifications for </em><em>internal</em><em> or </em><em>home</em>* modules.</li>
 </ul>
-<h2 id="modules-with-code-data">Modules WITH code: Data</h2>
+<h2 id="modules-with-code-data">Modules WITH code: Data<a class="headerlink" href="#modules-with-code-data" title="Permanent link">&para;</a></h2>
 <p>Write the specification directly into the .hs or .lhs file,
-above the data definition. See, for example, <a href="tests/pos/Map.hs">tests/pos/Map.hs</a></p>
-<pre><code>{-@
+above the data definition. See, for example, <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Map.hs">tests/pos/Map.hs</a>:</p>
+<pre><code class="haskell">{-@
 data Map k a &lt;l :: k -&gt; k -&gt; Prop, r :: k -&gt; k -&gt; Prop&gt;
   = Tip
   | Bin (sz    :: Size)
@@ -262,41 +312,47 @@ data Map k a &lt;l :: k -&gt; k -&gt; Prop, r :: k -&gt; k -&gt; Prop&gt;
 data Map k a = Tip
              | Bin Size k a (Map k a) (Map k a)
 </code></pre>
+
 <p>You can also write invariants for data type definitions
-together with the types. For example, see <a href="tests/pos/record0.hs">tests/pos/record0.hs</a></p>
-<pre><code>{-@ data LL a = BXYZ { size  :: {v: Int | v &gt; 0 }
-                     , elems :: {v: [a] | (len v) = size }
-                     }
+together with the types. For example, see <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/record0.hs">tests/pos/record0.hs</a>:</p>
+<pre><code class="haskell">{-@ 
+data LL a = BXYZ { size  :: {v: Int | v &gt; 0 }
+                 , elems :: {v: [a] | (len v) = size }
+                 }
 @-}
 </code></pre>
+
 <p>Finally you can specify the variance of type variables for data types.
-For example, see <a href="tests/pos/Variance.hs">tests/pos/Variance.hs</a>, where data type <code>Foo</code> has four
+For example, see <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Variance.hs">tests/pos/Variance.hs</a>, where data type <code>Foo</code> has four
 type variables <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, specified as invariant, bivariant,
 covariant and contravariant, respectively.</p>
-<pre><code>data Foo a b c d
-{-@ data variance Foo invariant bivariant covariant contravariant @-}
+<pre><code>{-@ data variance Foo invariant bivariant covariant contravariant @-}
+data Foo a b c d
 </code></pre>
-<h2 id="modules-with-code-functions">Modules WITH code: Functions</h2>
+
+<h2 id="modules-with-code-functions">Modules WITH code: Functions<a class="headerlink" href="#modules-with-code-functions" title="Permanent link">&para;</a></h2>
 <p>Write the specification directly into the .hs or .lhs file,
-above the function definition. <a href="tests/pos/spec0.hs">For example</a></p>
-<pre><code>{-@ incr :: x:{v: Int | v &gt; 0} -&gt; {v: Int | v &gt; x} @-}
+above the function definition. <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/spec0.hs">For example</a>:</p>
+<pre><code class="haskell">{-@ incr :: x:{v: Int | v &gt; 0} -&gt; {v: Int | v &gt; x} @-}
 incr   :: Int -&gt; Int
 incr x = x + 1
 </code></pre>
-<h2 id="modules-with-code-type-classes">Modules WITH code: Type Classes</h2>
+
+<h2 id="modules-with-code-type-classes">Modules WITH code: Type Classes<a class="headerlink" href="#modules-with-code-type-classes" title="Permanent link">&para;</a></h2>
 <p>Write the specification directly into the .hs or .lhs file,
-above the type class definition. <a href="tests/pos/Class.hs">For example</a></p>
-<pre><code>{-@ class Sized s where
+above the type class definition. <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Class.hs">For example</a>:</p>
+<pre><code class="haskell">{-@ class Sized s where
       size :: forall a. x:s a -&gt; {v:Int | v = (size x)}
 @-}
 class Sized s where
   size :: s a -&gt; Int
 </code></pre>
+
 <p>Any measures used in the refined class definition will need to be
 <em>generic</em> (see <a href="#specifying-measures">Specifying Measures</a>).</p>
 <p>As an alternative, you can refine class instances.
-<a href="tests/classes/pos/Inst00.hs">For example</a></p>
-<pre><code>instance Compare Int where
+<a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/classes/pos/Inst00.hs">For example</a>:</p>
+<pre><code class="haskell">instance Compare Int where
 
 {-@ instance Compare Int where
     cmax :: Odd -&gt; Odd -&gt; Odd
@@ -305,11 +361,9 @@ class Sized s where
 cmax y x = if x &gt;= y then x else y
 </code></pre>
 
-<p>When <code>cmax</code> method is used on <code>Int</code>, liquidHaskell will give it
-the refined type <code>Odd -&gt; Odd -&gt; Odd</code>.</p>
-<p>Note that currently liquidHaskell does not allow refining instances of
-refined classes.</p>
-<h2 id="modules-with-code-quasiquotation">Modules WITH code: QuasiQuotation</h2>
+<p>When <code>cmax</code> method is used on <code>Int</code>, <code>liquidHaskell</code> will give it the refined type <code>Odd -&gt; Odd -&gt; Odd</code>.</p>
+<p><em>Note that currently <code>liquidHaskell</code> does not allow refining instances of refined classes</em>.</p>
+<h2 id="modules-with-code-quasiquotation">Modules WITH code: QuasiQuotation<a class="headerlink" href="#modules-with-code-quasiquotation" title="Permanent link">&para;</a></h2>
 <p>Instead of writing both a Haskell type signature <em>and</em> a
 LiquidHaskell specification for a function, the <code>lq</code>
 quasiquoter in the <code>LiquidHaskell</code> module can be used
@@ -354,7 +408,7 @@ dependency-light package. Also, at this time, writing
 a type inside <code>lq</code> which refers to a refined type alias
 for which there is not a plain Haskell type synonym of the
 same name will result in a "not in scope" error from GHC.</p>
-<h2 id="standalone-specifications-for-internal-modules">Standalone Specifications for Internal Modules</h2>
+<h2 id="standalone-specifications-for-internal-modules">Standalone Specifications for Internal Modules<a class="headerlink" href="#standalone-specifications-for-internal-modules" title="Permanent link">&para;</a></h2>
 <p>Recall that the <code>.spec</code> mechanism is only for modules whose
 code is absent; if code is present then there can be multiple,
 possibly conflicting specifications. Nevertheless, you may want,
@@ -386,22 +440,22 @@ import LibSpec  -- use this if you DO want the spec, in addition to OR instead o
 bar = foo 1     -- if you `import LibSpec` then this call is rejected by LH
 </code></pre>
 
-<h2 id="inductive-predicates">Inductive Predicates</h2>
-<p><strong>Very Experimental</strong></p>
+<h2 id="inductive-predicates">Inductive Predicates<a class="headerlink" href="#inductive-predicates" title="Permanent link">&para;</a></h2>
+<p><strong>Status:</strong> <code>very_experimental</code></p>
 <p>LH recently added support for <em>Inductive Predicates</em>
 in the style of Isabelle, Coq etc. These are encoded
 simply as plain Haskell GADTs but suitably refined.</p>
 <p>Apologies for the minimal documentation; see the
 following examples for details:</p>
 <ul>
-<li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/ple/pos/IndEven.hs">Even and Odd</a></li>
+<li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/ple/pos/IndPalindrome.hs">Palindrome</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/ple/pos/IndPerm.hs">Permutations</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/ple/pos/IndStar.hs">Transitive Closure</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/ple/pos/RegexpDerivative.hs">RegExp Derivatives</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/ple/pos/STLC2.hs">Type Safety of STLC</a></li>
 </ul>
-<h2 id="implicit-arguments">Implicit Arguments</h2>
-<p><strong>Experimental</strong></p>
+<h2 id="implicit-arguments">Implicit Arguments<a class="headerlink" href="#implicit-arguments" title="Permanent link">&para;</a></h2>
+<p><strong>Status:</strong> <code>experimental</code></p>
 <p>There is experimental support for implicit arguments, solved for with congruence closure. For example, consider <a href="https://github.com/ucsd-progsys/liquidhaskell/blob/develop/tests/pos/Implicit1.hs">Implicit1.hs</a>:</p>
 <pre><code class="haskell">{-@ type IntN N = {v:Int | v = N} @-}
 
@@ -413,33 +467,36 @@ test1 = foo (\_ -&gt; 10)
 </code></pre>
 
 <p>Here, the refinement on <code>(\_ -&gt; 10) :: Int -&gt; { v:Int | v = 10 }</code> allows us to solve for <code>n = 10</code>, the implicit argument to <code>foo</code>.</p>
-<h2 id="refinement-type-aliases">Refinement Type Aliases</h2>
-<h4 id="predicate-aliases">Predicate Aliases</h4>
+<h2 id="refinement-type-aliases">Refinement Type Aliases<a class="headerlink" href="#refinement-type-aliases" title="Permanent link">&para;</a></h2>
+<h3 id="predicate-aliases">Predicate Aliases<a class="headerlink" href="#predicate-aliases" title="Permanent link">&para;</a></h3>
 <p>Often, the propositions in the refinements can get rather long and
 verbose. You can write predicate aliases like so:</p>
-<pre><code>{-@ predicate Lt X Y = X &lt; Y        @-}
+<pre><code class="haskell">{-@ predicate Lt X Y = X &lt; Y        @-}
 {-@ predicate Ge X Y = not (Lt X Y) @-}
 </code></pre>
-<p>and then use the aliases inside refinements, <a href="tests/pos/pred.hs">for example</a></p>
-<pre><code>{-@ incr :: x:{v:Int | (Pos v)} -&gt; { v:Int | ((Pos v) &amp;&amp; (Ge v x))} @-}
+
+<p>and then use the aliases inside refinements, <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/pred.hs">for example</a></p>
+<pre><code class="haskell">{-@ incr :: x:{v:Int | (Pos v)} -&gt; { v:Int | ((Pos v) &amp;&amp; (Ge v x))} @-}
 incr :: Int -&gt; Int
 incr x = x + 1
 </code></pre>
-<p>See <a href="benchmarks/esop2013-submission/Base.hs">Data.Map</a> for a more substantial
+
+<p>See <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/benchmarks/esop2013-submission/Base.hs">Data.Map</a> for a more substantial
 and compelling example.</p>
 <p><strong>Syntax:</strong> The key requirements for type aliases are:</p>
 <ul>
 <li>Value parameters are specified in <strong>upper</strong>case: <code>X</code>, <code>Y</code>, <code>Z</code> etc.</li>
 </ul>
-<h4 id="failing-specifications">Failing Specifications</h4>
-<p>The <code>fail b</code> declaration checks that the definition of <code>b</code> is unsafe. E.g., the followin is SAFE.</p>
-<pre><code>{-@ fail unsafe @-}
+<h3 id="failing-specifications">Failing Specifications<a class="headerlink" href="#failing-specifications" title="Permanent link">&para;</a></h3>
+<p>The <code>fail b</code> declaration checks that the definition of <code>b</code> is unsafe. E.g., the following is SAFE.</p>
+<pre><code class="haskell">{-@ fail unsafe @-}
 {-@ unsafe :: () -&gt; { 0 == 1 } @-}
 unsafe :: () -&gt; () 
 unsafe _ = ()
 </code></pre>
+
 <p>An error is created if <code>fail</code> definitions are safe or binders defined as <code>fail</code> are used by (failing or not) definitions. </p>
-<h4 id="type-aliases">Type Aliases</h4>
+<h3 id="type-aliases">Type Aliases<a class="headerlink" href="#type-aliases" title="Permanent link">&para;</a></h3>
 <p>Similarly, it is often quite tedious to keep writing</p>
 <pre><code>{v: Int | v &gt; 0}
 </code></pre>
@@ -465,38 +522,38 @@ unsafe _ = ()
 <p>and:</p>
 <pre><code>{-@ assert insert :: (Ord a) =&gt; a -&gt; SortedList a -&gt; SortedList a @-}
 </code></pre>
-<p>see <a href="tests/pos/ListSort.hs">tests/pos/ListSort.hs</a></p>
+<p>see <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/ListSort.hs">tests/pos/ListSort.hs</a></p>
 <p>and:</p>
 <pre><code>{-@ assert insert :: (Ord k) =&gt; k -&gt; a -&gt; OMap k a -&gt; OMap k a @-}
 </code></pre>
-<p>see <a href="tests/pos/Map.hs">tests/pos/Map.hs</a></p>
+<p>see <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Map.hs">tests/pos/Map.hs</a></p>
 <p><strong>Syntax:</strong> The key requirements for type aliases are:</p>
 <ol>
 <li>Type parameters are specified in <strong>lower</strong>case: <code>a</code>, <code>b</code>, <code>c</code> etc.</li>
 <li>Value parameters are specified in <strong>upper</strong>case: <code>X</code>, <code>Y</code>, <code>Z</code> etc.</li>
 </ol>
-<h2 id="infix-operators">Infix  Operators</h2>
+<h2 id="infix-operators">Infix  Operators<a class="headerlink" href="#infix-operators" title="Permanent link">&para;</a></h2>
 <p>You can define infix types and logical operators in logic <a href="https://www.haskell.org/onlinereport/decls.html#fixity">Haskell's infix notation</a>.
 For example, if <code>(+++)</code> is defined as a measure or reflected function, you can use it infix by declaring</p>
 <pre><code>{-@ infixl 9 +++ @-}
 </code></pre>
 <p>Note: infix operators cannot contain the dot character <code>.</code>.</p>
-<p>If <code>(==&gt;)</code> is a Haskell infix type (<a href="tests/pos/T1567.hs">see</a>) </p>
+<p>If <code>(==&gt;)</code> is a Haskell infix type (<a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/T1567.hs">see</a>) </p>
 <pre><code>infixr 1 ==&gt;
 </code></pre>
 <p>then to use it as infix in the refinements types you need to add the refinement infix notation. </p>
 <pre><code>{-@ infixr 1 ==&gt; @-}
 {-@ test :: g:(f ==&gt; g) -&gt; f x -&gt; f y -&gt; ()  @-}
 </code></pre>
-<h2 id="specifying-measures">Specifying Measures</h2>
-<p>Can be placed in .spec file or in .hs/.lhs file wrapped around <code>{-@ @-}</code></p>
-<p>Value measures: <a href="include/GHC/Base.spec">include/GHC/Base.spec</a></p>
+<h2 id="specifying-measures">Specifying Measures<a class="headerlink" href="#specifying-measures" title="Permanent link">&para;</a></h2>
+<p>They can be placed in a <code>.spec</code> file or in a .hs/.lhs file wrapped around <code>{-@ @-}</code>.</p>
+<p>Value measures: <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/liquid-base/src/GHC/Base.spec">GHC/Base.spec</a></p>
 <pre><code>measure len :: forall a. [a] -&gt; GHC.Types.Int
 len ([])     = 0
 len (y:ys)   = 1 + len(ys)
 </code></pre>
-<p>Propositional measures: <a href="tests/pos/LambdaEval.hs">tests/pos/LambdaEval.hs</a></p>
-<pre><code>{-@
+<p>Propositional measures: <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/LambdaEval.hs">tests/pos/LambdaEval.hs</a></p>
+<pre><code class="haskell">{-@
 measure isValue      :: Expr -&gt; Bool
 isValue (Const i)    = true
 isValue (Lam x e)    = true
@@ -508,14 +565,16 @@ isValue (Snd e)      = false
 isValue (Pair e1 e2) = ((? (isValue(e1))) &amp;&amp; (? (isValue(e2))))
 @-}
 </code></pre>
-<p>Raw measures: <a href="tests/pos/meas8.hs">tests/pos/meas8.hs</a></p>
-<pre><code>{-@ measure rlen :: [a] -&gt; Int
+
+<p>Raw measures: <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/meas8.hs">tests/pos/meas8.hs</a></p>
+<pre><code class="haskell">{-@ measure rlen :: [a] -&gt; Int
 rlen ([])   = {v | v = 0}
 rlen (y:ys) = {v | v = (1 + rlen(ys))}
 @-}
 </code></pre>
-<p>Generic measures: <a href="tests/pos/Class.hs">tests/pos/Class.hs</a></p>
-<pre><code>{-@ class measure size :: a -&gt; Int @-}
+
+<p>Generic measures: <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Class.hs">tests/pos/Class.hs</a></p>
+<pre><code class="haskell">{-@ class measure size :: a -&gt; Int @-}
 {-@ instance measure size :: [a] -&gt; Int
     size ([])   = 0
     size (x:xs) = 1 + (size xs)
@@ -525,27 +584,28 @@ rlen (y:ys) = {v | v = (1 + rlen(ys))}
     size (Node x l r) = 1 + (size l) + (size r)
 @-}
 </code></pre>
+
 <p><strong>Note:</strong> Measure names <strong>do not</strong> have to be the same as
 field name, e.g. we could call the measure <code>sz</code> in the above
-as shown in <a href="tests/pos/Class2.hs">tests/pos/Class2.hs</a>.</p>
-<p>Haskell Functions as Measures (beta): <a href="tests/pos/HaskellMeasure.hs">tests/pos/HaskellMeasure.hs</a></p>
+as shown in <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Class2.hs">tests/pos/Class2.hs</a>.</p>
+<p>Haskell Functions as Measures (beta): <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/HaskellMeasure.hs">tests/pos/HaskellMeasure.hs</a></p>
 <p>Inductive Haskell Functions from Data Types to some type can be lifted to logic</p>
-<pre><code class="haskell">    {-@ measure llen @-}
-    llen        :: [a] -&gt; Int
-    llen []     = 0
-    llen (x:xs) = 1 + llen xs
+<pre><code class="haskell">{-@ measure llen @-}
+llen        :: [a] -&gt; Int
+llen []     = 0
+llen (x:xs) = 1 + llen xs
 </code></pre>
 
-<p>The above definition
-  - refines list's data constructors types with the llen information, and
-  - specifies a singleton type for the haskell function
-        <code>llen :: xs:[a] -&gt; {v:Int | v == llen xs}</code>
-    If the user specifies another type for llen, say
-        <code>llen :: xs:[a] -&gt; {v:Int | llen xs &gt;= 0}</code>
-    then the auto generated singleton type is overwritten.</p>
-<h2 id="inlines">Inlines</h2>
-<p>The <code>inline</code>  lets you use a Haskell function in a type specification. </p>
-<pre><code>{-@ inline max @-}
+<p>The above definition:</p>
+<ul>
+<li>refines list's data constructors types with the llen information, and</li>
+<li>specifies a singleton type for the haskell function <code>llen :: xs:[a] -&gt; {v:Int | v == llen xs}</code>.
+  If the user specifies another type for <code>llen</code>, say <code>llen :: xs:[a] -&gt; {v:Int | llen xs &gt;= 0}</code>,
+  then the auto generated singleton type is overwritten.</li>
+</ul>
+<h2 id="inlines">Inlines<a class="headerlink" href="#inlines" title="Permanent link">&para;</a></h2>
+<p>The <code>inline</code> lets you use a Haskell function in a type specification. </p>
+<pre><code class="haskell">{-@ inline max @-}
 {-@ max :: Int -&gt; Int -&gt; Int @-}
 max :: Int -&gt; Int -&gt; Int
 max x y = if x &gt; y then x else y
@@ -566,8 +626,8 @@ specifications, and to share definitions common to refinements and code.</p>
 <p>However, as they are <em>expanded</em> at compile time, <code>inline</code> functions 
 <strong>cannot be recursive</strong>. The can call <em>other</em> (non-recursive) inline functions.</p>
 <p>If you want to talk about arbitrary (recursive) functions inside your types, 
-then you need to use <code>reflect</code> described [in the blog] (https://ucsd-progsys.github.io/liquidhaskell-blog/tags/reflection.html)</p>
-<h1 id="self-invariants">Self-Invariants</h1>
+then you need to use <code>reflect</code> described <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/tags/reflection.html">in the blog</a>.</p>
+<h1 id="self-invariants">Self-Invariants<a class="headerlink" href="#self-invariants" title="Permanent link">&para;</a></h1>
 <p>Sometimes, we require specifications that allow <em>inner</em> components of a
 type to refer to the <em>outer</em> components, typically, to measure-based
 properties of outer components. For example, the following invariant
@@ -577,7 +637,7 @@ about <code>Maybe</code> values</p>
 <p>states that the <em>inner</em> <code>a</code> enjoys the property that the <em>outer</em> container
 is definitely a <code>Just</code> and furthermore, the inner value is exactly the same
 as the <code>fromJust</code> property of the outer container.</p>
-<p>As another example, suppose we have a <a href="include/Data/Set.spec">measure</a>:</p>
+<p>As another example, suppose we have a <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/liquid-containers/src/Data/Set.spec">measure</a>:</p>
 <pre><code>measure listElts :: [a] -&gt; (Set a)
 listElts([])   = {v | (? Set_emp(v))}
 listElts(x:xs) = {v | v = Set_cup(Set_sng(x), listElts(xs)) }
@@ -589,16 +649,16 @@ listElts(x:xs) = {v | v = Set_cup(Set_sng(x), listElts(xs)) }
 set of the elements belonging to the entire list.</p>
 <p>One often needs these <em>circular</em> or <em>self</em> invariants to connect different
 levels (or rather, to <em>reify</em> the connections between the two levels.) See
-<a href="tests/pos/maybe4.hs">this test</a> for a simple example and <code>hedgeUnion</code> and
-<a href="benchmarks/esop2013-submission/Base.hs">Data.Map.Base</a> for a complex one.</p>
-<h1 id="abstract-and-bounded-refinements">Abstract and Bounded Refinements</h1>
+<a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/maybe4.hs">this test</a> for a simple example and <code>hedgeUnion</code> and
+<a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/benchmarks/esop2013-submission/Base.hs">Data.Map.Base</a> for a complex one.</p>
+<h1 id="abstract-and-bounded-refinements">Abstract and Bounded Refinements<a class="headerlink" href="#abstract-and-bounded-refinements" title="Permanent link">&para;</a></h1>
 <p>This is probably the best example of the abstract refinement syntax:</p>
 <ul>
-<li><a href="tests/pos/Map.hs">Abstract Refinements</a></li>
-<li><a href="benchmarks/icfp15/pos/Overview.lhs">Bounded Refinements</a></li>
+<li><a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/Map.hs">Abstract Refinements</a></li>
+<li><a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/benchmarks/icfp15/pos/Overview.lhs">Bounded Refinements</a></li>
 </ul>
 <p>Unfortunately, the best documentation for these two advanced features
-is the relevant papers at</p>
+is the relevant papers at:</p>
 <ul>
 <li><a href="https://ranjitjhala.github.io/static/abstract_refinement_types.pdf">ESOP 2013</a></li>
 <li><a href="https://arxiv.org/abs/1507.00385">ICFP 2015</a></li>
@@ -606,7 +666,7 @@ is the relevant papers at</p>
 <p>The bounds correspond to Horn implications between abstract refinements,
 which, as in the classical setting, correspond to subtyping constraints
 that must be satisfied by the concrete refinements used at any call-site.</p>
-<h1 id="dependent-pairs">Dependent Pairs</h1>
+<h1 id="dependent-pairs">Dependent Pairs<a class="headerlink" href="#dependent-pairs" title="Permanent link">&para;</a></h1>
 <p>Dependent Pairs are expressed by binding the initial tuples of the pair. For example
 <code>incrPair</code> defines an increasing pair.</p>
 <pre><code>{-@ incrPair :: Int -&gt; (x::Int, {v:Int | x &lt;= v}) @-}
@@ -614,10 +674,10 @@ incrPair i = (i, i+1)
 </code></pre>
 <p>Internally dependent pairs are implemented using abstract refinement types.
 That is <code>(x::a, {v:b | p x})</code> desugars to <code>(a,b)&lt;\x -&gt; {v:b | p x}&gt;</code>.</p>
-<h1 id="invariants">Invariants</h1>
+<h1 id="invariants">Invariants<a class="headerlink" href="#invariants" title="Permanent link">&para;</a></h1>
 <p>LH lets you locally associate invariants with specific data types.</p>
-<p>For example, in <a href="tests/measure/pos/Using00.hs">tests/measure/pos/Using00.hs</a> every
-list is treated as a Stream. To establish this local invariant one can use the
+<p>For example, in <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/measure/pos/Using00.hs">tests/measure/pos/Using00.hs</a> every
+list is treated as a <code>Stream</code>. To establish this local invariant one can use the
 <code>using</code> declaration</p>
 <pre><code>{-@ using ([a]) as  {v:[a] | (len v &gt; 0)} @-}
 </code></pre>
@@ -626,9 +686,9 @@ list is treated as a Stream. To establish this local invariant one can use the
 calls</em> to List's constructors (ie., <code>:</code> and <code>[]</code>) satisfy it, and
 will assume that each list element that is created satisfies
 this invariant.</p>
-<p>With this, at the <a href="tests/measure/neg/Using00.hs">above</a> test LiquidHaskell
+<p>With this, at the <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/measure/neg/Using00.hs">above</a> test LiquidHaskell
 proves that taking the <code>head</code> of a list is safe.
-But, at <a href="tests/measure/neg/Using00.hs">tests/measure/neg/Using00.hs</a> the usage of
+But, at <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/measure/neg/Using00.hs">tests/measure/neg/Using00.hs</a> the usage of
 <code>[]</code> falsifies this local invariant resulting in an "Invariant Check" error.</p>
 <p><strong>WARNING:</strong> There is an older <em>global</em> invariant mechanism that
 attaches a refinement to a datatype globally.
@@ -641,8 +701,8 @@ deprecated in favor of something that is <a href="https://github.com/ucsd-progsy
 constructors (ie., <code>:</code> and <code>[]</code>) satisfy it.(TODO!) Then, LiquidHaskell
 assumes that each list element that is created satisfies
 this invariant.</p>
-<h1 id="rewriting">Rewriting</h1>
-<p><em>Experimental</em></p>
+<h1 id="rewriting">Rewriting<a class="headerlink" href="#rewriting" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> <code>experimental</code></p>
 <p>You use the <code>rewriteWith</code> annotation to indicate equalities that PLE will apply automatically. For example, suppose that you have proven associativity
 of <code>++</code> for lists.</p>
 <pre><code class="haskell">{-@ assoc :: xs:[a] -&gt; ys:[a] -&gt; zs:[a] 
@@ -664,9 +724,9 @@ assoc2 xs ys zs ws = ()
           -&gt; { xs ++ (ys ++ zs) == (xs ++ ys) ++ zs } @-}
 </code></pre>
 
-<h3 id="limitations">Limitations</h3>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <p>Currently, rewriting does not work if the equality that uses the rewrite rule
-includes parameters that contain inner refinements (<a href="tests/errors/ReWrite5.hs">test</a>).</p>
+includes parameters that contain inner refinements (<a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/errors/ReWrite5.hs">test</a>).</p>
 <p>Rewriting works by pattern-matching expressions to determine if there is a
 variable substitution that would allow it to match against either side of a
 rewrite rule. If so, that substitution is applied to the opposite side and the
@@ -674,19 +734,19 @@ corresponding equality is generated. If one side of the equality contains any
 parameters that are not bound on the other side, it will not be possible to
 generate a rewrite in that direction, because those variables cannot be
 instantiated. Likewise, if there are free variables on both sides of an
-equality, no rewrite can be generated at all (<a href="tests/errors/ReWrite7.hs">test</a>).</p>
+equality, no rewrite can be generated at all (<a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/errors/ReWrite7.hs">test</a>).</p>
 <p>It's possible in theory for rewriting rules to diverge. We have a simple check 
 to ensure that rewriting rules that will always diverge do not get instantiated. 
 However, it's possible that applying a combination of rewrite rules could cause
 divergence.</p>
-<h1 id="formal-grammar-of-refinement-predicates">Formal Grammar of Refinement Predicates</h1>
-<h2 id="constants">(C)onstants</h2>
+<h1 id="formal-grammar-of-refinement-predicates">Formal Grammar of Refinement Predicates<a class="headerlink" href="#formal-grammar-of-refinement-predicates" title="Permanent link">&para;</a></h1>
+<h2 id="constants">(C)onstants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <pre><code>c := 0, 1, 2, ...
 </code></pre>
-<h2 id="variables">(V)ariables</h2>
+<h2 id="variables">(V)ariables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
 <pre><code>v := x, y, z, ...
 </code></pre>
-<h2 id="expressions">(E)xpressions</h2>
+<h2 id="expressions">(E)xpressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h2>
 <pre><code>e := v                      -- variable
    | c                      -- constant
    | (e + e)                -- addition
@@ -695,7 +755,7 @@ divergence.</p>
    | (v e1 e2 ... en)       -- uninterpreted function application
    | (if p then e else e)   -- if-then-else
 </code></pre>
-<h2 id="relations">(R)elations</h2>
+<h2 id="relations">(R)elations<a class="headerlink" href="#relations" title="Permanent link">&para;</a></h2>
 <pre><code>r := ==               -- equality
    | /=               -- disequality
    | &gt;=               -- greater than or equal
@@ -703,7 +763,7 @@ divergence.</p>
    | &gt;                -- greater than
    | &lt;                -- less than
 </code></pre>
-<h2 id="predicates">(P)redicates</h2>
+<h2 id="predicates">(P)redicates<a class="headerlink" href="#predicates" title="Permanent link">&para;</a></h2>
 <pre><code>p := (e r e)          -- binary relation
    | (v e1 e2 ... en) -- predicate (or alias) application
    | (p &amp;&amp; p)         -- and
@@ -713,24 +773,24 @@ divergence.</p>
    | true
    | false
 </code></pre>
-<h1 id="specifying-qualifiers">Specifying Qualifiers</h1>
+<h1 id="specifying-qualifiers">Specifying Qualifiers<a class="headerlink" href="#specifying-qualifiers" title="Permanent link">&para;</a></h1>
 <p>There are several ways to specify qualifiers.</p>
-<h2 id="by-separate-hquals-files">By Separate <code>.hquals</code> Files</h2>
-<p>You can write qualifier files e.g. <a href="include/Prelude.hquals">Prelude.hquals</a></p>
+<h2 id="by-separate-hquals-files">By Separate <code>.hquals</code> Files<a class="headerlink" href="#by-separate-hquals-files" title="Permanent link">&para;</a></h2>
+<p>You can write qualifier files e.g. <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/include/Prelude.hquals">Prelude.hquals</a>..</p>
 <p>If a module is called or imports</p>
 <pre><code>Foo.Bar.Baz
 </code></pre>
 <p>Then the system automatically searches for</p>
 <pre><code>include/Foo/Bar/Baz.hquals
 </code></pre>
-<h2 id="by-including-hquals-files">By Including <code>.hquals</code> Files</h2>
+<h2 id="by-including-hquals-files">By Including <code>.hquals</code> Files<a class="headerlink" href="#by-including-hquals-files" title="Permanent link">&para;</a></h2>
 <p>Additional qualifiers may be used by adding lines of the form:</p>
 <pre><code>{-@ include &lt;path/to/file.hquals&gt; @-}
 </code></pre>
-<p>to the Haskell source. See, <a href="tests/pos/meas5.hs">this</a> for example.</p>
-<h2 id="in-haskell-source-or-spec-files">In Haskell Source or Spec Files</h2>
+<p>to the Haskell source. See, <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/meas5.hs">this</a> for example.</p>
+<h2 id="in-haskell-source-or-spec-files">In Haskell Source or Spec Files<a class="headerlink" href="#in-haskell-source-or-spec-files" title="Permanent link">&para;</a></h2>
 <p>Finally, you can specifiers directly inside source (.hs or .lhs) or spec (.spec)
-files by writing as shown <a href="tests/pos/qualTest.hs">here</a></p>
+files by writing as shown <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/qualTest.hs">here</a></p>
 <pre><code>{-@ qualif Foo(v:Int, a: Int) : (v = a + 100)   @-}
 </code></pre>
 <p><strong>Note</strong> In addition to these, LiquidHaskell scrapes qualifiers from all
@@ -740,21 +800,21 @@ the specifications you write i.e.</p>
 <li>measure bodies and,</li>
 <li>data constructor definitions.</li>
 </ol>
-<h2 id="termination-metrics">Termination Metrics</h2>
+<h1 id="termination-metrics">Termination Metrics<a class="headerlink" href="#termination-metrics" title="Permanent link">&para;</a></h1>
 <p>In recursive functions the <em>first</em> algebraic or integer argument should be decreasing.</p>
 <p>The default decreasing measure for lists is length and Integers its value.</p>
-<h3 id="default-termination-metrics">Default Termination Metrics</h3>
+<h2 id="default-termination-metrics">Default Termination Metrics<a class="headerlink" href="#default-termination-metrics" title="Permanent link">&para;</a></h2>
 <p>The user can specify the <em>size</em> of a data-type in the data definition</p>
-<pre><code class="haskell">    {-@ data L [llen] a = Nil | Cons { x::a, xs:: L a} @-}
+<pre><code class="haskell">{-@ data L [llen] a = Nil | Cons { x::a, xs:: L a} @-}
 </code></pre>
 
 <p>In the above, the measure <code>llen</code>, which needs to be defined by the user
 (see below), is defined as the <em>default metric</em> for the type <code>L a</code>. LH
 will use this default metric to <em>automatically</em> prove that the following
 terminates:</p>
-<pre><code class="haskell">    append :: L a -&gt; L a -&gt; L a  
-    append N           ys = ys
-    append (Cons x xs) ys = Cons x (append xs ys)
+<pre><code class="haskell">append :: L a -&gt; L a -&gt; L a  
+append N           ys = ys
+append (Cons x xs) ys = Cons x (append xs ys)
 </code></pre>
 
 <p>as, by default the <em>first</em> (non-function) argument with an
@@ -763,35 +823,35 @@ and non-negative at each recursive call.</p>
 <p>A default termination metric is a Haskell function that is proved terminating 
 using structural induction. To deactivate structional induction check on the 
 termination metric, use the <code>--trust-sizes</code> flag. </p>
-<h3 id="explicit-termination-metrics">Explicit Termination Metrics</h3>
-<p>However, consider the function <code>reverse</code></p>
-<pre><code class="haskell">    reverseAcc :: L a -&gt; L a -&gt; L a  
-    reverseAcc acc N           = acc
-    reverseAcc acc (Cons x xs) = reverseAcc (Cons x acc) xs
+<h2 id="explicit-termination-metrics">Explicit Termination Metrics<a class="headerlink" href="#explicit-termination-metrics" title="Permanent link">&para;</a></h2>
+<p>However, consider the function <code>reverse</code>:</p>
+<pre><code class="haskell">reverseAcc :: L a -&gt; L a -&gt; L a  
+reverseAcc acc N           = acc
+reverseAcc acc (Cons x xs) = reverseAcc (Cons x acc) xs
 </code></pre>
 
 <p>Here, the first argument does not decrease, instead
 the second does. We can tell LH to use the second
 argument using the <em>explicit termination metric</em></p>
-<pre><code class="haskell">    reverseAcc :: L a -&gt; xs:L a -&gt; L a / [llen xs]  
+<pre><code class="haskell">reverseAcc :: L a -&gt; xs:L a -&gt; L a / [llen xs]  
 </code></pre>
 
 <p>which tells LH that the <code>llen</code> of the second argument <code>xs</code>
 is what decreases at each recursive call.</p>
 <p>Decreasing expressions can be arbitrary refinement expressions, e.g.,</p>
-<pre><code class="haskell">    {-@ merge :: Ord a =&gt; xs:L a -&gt; ys:L a -&gt; L a / [llen xs + llen ys] @-}
+<pre><code class="haskell">{-@ merge :: Ord a =&gt; xs:L a -&gt; ys:L a -&gt; L a / [llen xs + llen ys] @-}
 </code></pre>
 
 <p>states that at each recursive call of <code>merge</code> the <em>sum of the lengths</em>
 of its arguments will decrease.</p>
-<h3 id="lexicographic-termination-metrics">Lexicographic Termination Metrics</h3>
+<h2 id="lexicographic-termination-metrics">Lexicographic Termination Metrics<a class="headerlink" href="#lexicographic-termination-metrics" title="Permanent link">&para;</a></h2>
 <p>Some functions do not decrease on a single argument, but rather a
 combination of arguments, e.g. the Ackermann function.</p>
-<pre><code class="haskell">    {-@ ack :: m:Int -&gt; n:Int -&gt; Nat / [m, n] @-}
-    ack m n
-      | m == 0          = n + 1
-      | m &gt; 0 &amp;&amp; n == 0 = ack (m-1) 1
-      | m &gt; 0 &amp;&amp; n &gt;  0 = ack (m-1) (ack m (n-1))
+<pre><code class="haskell">{-@ ack :: m:Int -&gt; n:Int -&gt; Nat / [m, n] @-}
+ack m n
+  | m == 0          = n + 1
+  | m &gt; 0 &amp;&amp; n == 0 = ack (m-1) 1
+  | m &gt; 0 &amp;&amp; n &gt;  0 = ack (m-1) (ack m (n-1))
 </code></pre>
 
 <p>In all but one recursive call <code>m</code> decreases, in the final call <code>m</code>
@@ -804,38 +864,39 @@ As an example, you can give <code>ack</code> a type</p>
 <pre><code>{-@ ack :: m:Nat -&gt; n:Nat -&gt; Nat / [m,n] @-}
 </code></pre>
 <p>stating that the <em>numeric</em> expressions <code>[m, n]</code> are lexicographically decreasing.</p>
-<h3 id="mutually-recursive-functions">Mutually Recursive Functions</h3>
+<h2 id="mutually-recursive-functions">Mutually Recursive Functions<a class="headerlink" href="#mutually-recursive-functions" title="Permanent link">&para;</a></h2>
 <p>When dealing with mutually recursive functions you may run into a
 situation where the decreasing parameter must be measured <em>across</em> a
 series of invocations, e.g.</p>
-<pre><code class="haskell">    even :: Int -&gt; Bool
-    even 0 = True
-    even n = odd (n-1)
+<pre><code class="haskell">even :: Int -&gt; Bool
+even 0 = True
+even n = odd (n-1)
 
-    odd :: Int -&gt; Bool
-    odd  n = not (even n)
+odd :: Int -&gt; Bool
+odd  n = not (even n)
 </code></pre>
 
 <p>In this case, you can introduce a ghost parameter that <em>orders the functions</em></p>
-<pre><code class="haskell">    {-@ isEven :: n:Nat -&gt; Bool / [n, 0] @-}
-    isEven :: Int -&gt; Bool
-    isEven 0 = True
-    isEven n = isOdd (n-1)
+<pre><code class="haskell">{-@ isEven :: n:Nat -&gt; Bool / [n, 0] @-}
+isEven :: Int -&gt; Bool
+isEven 0 = True
+isEven n = isOdd (n-1)
 
-    {-@ isOdd :: n:Nat -&gt; Bool / [n, 1] @-}
-    isOdd :: Int -&gt; Bool
-    isOdd  n = not $ isEven n
+{-@ isOdd :: n:Nat -&gt; Bool / [n, 1] @-}
+isOdd :: Int -&gt; Bool
+isOdd  n = not $ isEven n
 </code></pre>
 
 <p>thus recovering a decreasing measure for the pair of functions, the
 pair of arguments. This can be encoded with the lexicographic
 termination annotation as shown above.
-See <a href="tests/pos/mutrec.hs">tests/pos/mutrec.hs</a> for the full example.</p>
-<h3 id="automatic-termination-metrics">Automatic Termination Metrics</h3>
+See <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/pos/mutrec.hs">tests/pos/mutrec.hs</a> 
+for the full example.</p>
+<h2 id="automatic-termination-metrics">Automatic Termination Metrics<a class="headerlink" href="#automatic-termination-metrics" title="Permanent link">&para;</a></h2>
 <p>Apart from specifying a specific decreasing measure for
 an Algebraic Data Type, the user can specify that the ADT
 follows the expected decreasing measure by</p>
-<pre><code class="haskell">    {-@ autosize L @-}
+<pre><code class="haskell">{-@ autosize L @-}
 </code></pre>
 
 <p>Then, LH will define an instance of the function <code>autosize</code>
@@ -844,27 +905,28 @@ for <code>L</code> that decreases by 1 at each recursive call and use
 <p>For example, <code>autosize L</code> will refine the data constructors
 of <code>L a</code> with the <code>autosize :: a -&gt; Int</code> information, such
 that</p>
-<pre><code class="haskell">    Nil  :: {v:L a | autosize v = 0}
-    Cons :: x:a -&gt; xs:L a -&gt; {v:L a | autosize v = 1 + autosize xs}
+<pre><code class="haskell">Nil  :: {v:L a | autosize v = 0}
+Cons :: x:a -&gt; xs:L a -&gt; {v:L a | autosize v = 1 + autosize xs}
 </code></pre>
 
 <p>Also, an invariant that <code>autosize</code> is non negative will be generated</p>
-<pre><code class="haskell">    invariant  {v:L a| autosize v &gt;= 0 }
+<pre><code class="haskell">invariant  {v:L a| autosize v &gt;= 0 }
 </code></pre>
 
 <p>This information is all LiquidHaskell needs to prove termination
 on functions that recurse on <code>L a</code> (on ADTs in general.)</p>
-<h3 id="disabling-termination-checking">Disabling Termination Checking</h3>
+<h2 id="disabling-termination-checking">Disabling Termination Checking<a class="headerlink" href="#disabling-termination-checking" title="Permanent link">&para;</a></h2>
 <p>To <em>disable</em> termination checking for <code>foo</code> that is,
 to <em>assume</em> that it is terminating (possibly for some
 complicated reason currently beyond the scope of LH)
 you can write</p>
-<pre><code class="haskell">    {-@ lazy foo @-}
+<pre><code class="haskell">{-@ lazy foo @-}
 </code></pre>
 
-<h2 id="synthesis">Synthesis</h2>
+<h1 id="synthesis">Synthesis<a class="headerlink" href="#synthesis" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> <code>experimental</code></p>
 <p>LH has some very preliminary support for program synthesis.</p>
-<h3 id="how-to-use-it">How to use it</h3>
+<h3 id="how-to-use-it">How to use it<a class="headerlink" href="#how-to-use-it" title="Permanent link">&para;</a></h3>
 <p>Activate the flag for typed holes in LiquidHaskell. E.g.
 from command line: </p>
 <pre><code>liquid --typedholes
@@ -883,13 +945,14 @@ from command line: </p>
 </ul>
 <p>Having the program specified in a Haskell source file, use 
 GHC' s hole variables, e.g.:</p>
-<pre><code>{-@ myMap :: (a -&gt; b) -&gt; xs:[a] -&gt; {v:[b] | len v == len xs} @-}
+<pre><code class="haskell">{-@ myMap :: (a -&gt; b) -&gt; xs:[a] -&gt; {v:[b] | len v == len xs} @-}
 myMap :: (a -&gt; b) -&gt; [a] -&gt; [b]
 myMap = _goal
 </code></pre>
-<h3 id="limitations_1">Limitations</h3>
+
+<h2 id="limitations_1">Limitations<a class="headerlink" href="#limitations_1" title="Permanent link">&para;</a></h2>
 <p>This is an experimental feature, so potential users could only 
-expect to synthesize programs, like <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/synth">these</a>.</p>
+expect to synthesize programs, like <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/tests/synthesis">these</a>.</p>
 <p>Current limitations include:</p>
 <ul>
 <li>No boolean conditionals are synthesized.</li>

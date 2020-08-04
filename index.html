@@ -33,29 +33,37 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
-                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Online</a>
+                            <li class="navitem active">
+                                <a href="." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="nav-link">Blog</a>
+                                <a href="plugin/" class="nav-link">Install</a>
                             </li>
                             <li class="navitem">
-                                <a href="plugin/" class="nav-link">Plugin</a>
+                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Play</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Learn <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="dropdown-item">Blog</a>
+</li>
+                                    
+<li>
+    <a href="options/" class="dropdown-item">Options</a>
+</li>
+                                    
+<li>
+    <a href="specifications/" class="dropdown-item">Specifications</a>
+</li>
+                                </ul>
                             </li>
                             <li class="navitem">
-                                <a href="legacy/" class="nav-link">Legacy</a>
+                                <a href="contributing/" class="nav-link">Get Involved</a>
                             </li>
                             <li class="navitem">
-                                <a href="options/" class="nav-link">Options</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="specifications/" class="nav-link">Specifications</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="contributing/" class="nav-link">Community</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="develop/" class="nav-link">Development</a>
+                                <a href="https://github.com/ucsd-progsys/liquidhaskell" class="nav-link"><i class='fa fa-github'></i>&nbsp;Github</a>
                             </li>
                         </ul>
 
@@ -65,6 +73,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="plugin/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -89,11 +107,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#longer-tutorials" class="nav-link">Longer Tutorials</a>
+            <li class="nav-item" data-level="2"><a href="#learn" class="nav-link">Learn</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#documentation" class="nav-link">Documentation</a>
+            <li class="nav-item" data-level="2"><a href="#get-involved" class="nav-link">Get involved</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -105,33 +123,37 @@
                     <div class="col-md-9" role="main">
 
 <p><img alt="LiquidHaskell" src="img/logo.png" /></p>
-<h1 id="liquidhaskell">LiquidHaskell</h1>
-<p>LiquidHaskell (LH) refines Haskell's types with logical 
+<h1 id="liquidhaskell">LiquidHaskell<a class="headerlink" href="#liquidhaskell" title="Permanent link">&para;</a></h1>
+<p>LiquidHaskell (<em>LH</em>) refines Haskell's types with logical 
 predicates that let you enforce important properties at 
 compile time. See <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/">the blog</a> 
 for examples.</p>
-<h2 id="quick-start">Quick Start</h2>
-<p>The following links are a quick way to play with and learn about LH</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>Read the below for more details on how to:</p>
+<ul>
+<li><strong>Install</strong> <a href="install/">external software</a> dependencies required by LH</li>
+<li><strong>Install</strong> and use LH as a <a href="plugin/">GHC Plugin</a></li>
+<li>Use the command line <a href="options/">options</a> supported by LH</li>
+<li>Write refinement type <a href="specifications/">specifications</a></li>
+</ul>
+<h2 id="learn">Learn<a class="headerlink" href="#learn" title="Permanent link">&para;</a></h2>
+<p>The following links are a quick way to play with and learn about LH:</p>
 <ul>
 <li><a href="http://goto.ucsd.edu:8090/index.html">Try online in your browser</a></li>
 <li><a href="https://ucsd-progsys.github.io/liquidhaskell-blog/">Splash page with examples and link to blog</a></li>
 <li><a href="https://liquid.kosmikus.org">Andres Loeh's Tutorial</a></li>
 </ul>
-<h2 id="longer-tutorials">Longer Tutorials</h2>
-<p>If the above whets your appetite, you may enjoy working through the following</p>
+<p>If the above whets your appetite, you may enjoy working through the following longer tutorials:</p>
 <ul>
 <li><a href="http://ucsd-progsys.github.io/lh-workshop/01-index.html">120 minute workshop with more examples</a></li>
 <li><a href="http://ucsd-progsys.github.io/liquidhaskell-tutorial/">Long ish Tutorial</a></li>
 </ul>
-<h2 id="documentation">Documentation</h2>
-<p>Read the below for more details on how to</p>
+<h2 id="get-involved">Get involved<a class="headerlink" href="#get-involved" title="Permanent link">&para;</a></h2>
+<p>If you are interested to contribute to LH and its ecosystem, you may want to:</p>
 <ul>
-<li>Use LH as a <a href="plugin/">GHC Plugin</a></li>
-<li>Use the (legacy) LH standalone <a href="legacy/">executable</a> </li>
-<li>Use the command line <a href="options/">options</a> supported by LH</li>
-<li>Write refinement type <a href="specifications/">specifications</a></li>
-<li>Develop and <a href="develop/">contribute</a> to LH</li>
-<li>Join the LH <a href="contributing/">community</a> to discuss issues related to LH</li>
+<li>Read the contribution <a href="contributing/">guidelines</a></li>
+<li>Read our <a href="develop/">developers' guide</a> to LH</li>
+<li>Join the LH <a href="community/">community</a> to discuss issues related to LH</li>
 </ul></div>
             </div>
         </div>
@@ -216,5 +238,5 @@ for examples.</p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-07-20 23:06:17.191859+00:00
+Build Date UTC : 2020-08-04 21:30:43.915894+00:00
 -->

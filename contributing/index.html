@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Community - LiquidHaskell</title>
+        <title>Get Involved - LiquidHaskell</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -34,28 +34,36 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Online</a>
+                                <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="nav-link">Blog</a>
+                                <a href="../plugin/" class="nav-link">Install</a>
                             </li>
                             <li class="navitem">
-                                <a href="../plugin/" class="nav-link">Plugin</a>
+                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Play</a>
                             </li>
-                            <li class="navitem">
-                                <a href="../legacy/" class="nav-link">Legacy</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../options/" class="nav-link">Options</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../specifications/" class="nav-link">Specifications</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Learn <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="dropdown-item">Blog</a>
+</li>
+                                    
+<li>
+    <a href="../options/" class="dropdown-item">Options</a>
+</li>
+                                    
+<li>
+    <a href="../specifications/" class="dropdown-item">Specifications</a>
+</li>
+                                </ul>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Community</a>
+                                <a href="./" class="nav-link">Get Involved</a>
                             </li>
                             <li class="navitem">
-                                <a href="../develop/" class="nav-link">Development</a>
+                                <a href="https://github.com/ucsd-progsys/liquidhaskell" class="nav-link"><i class='fa fa-github'></i>&nbsp;Github</a>
                             </li>
                         </ul>
 
@@ -71,7 +79,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../develop/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -93,13 +101,21 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#contributions" class="nav-link">Contributions</a>
+            <li class="nav-item" data-level="1"><a href="#get-involved" class="nav-link">Get involved</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#community" class="nav-link">Community</a>
+            <li class="nav-item" data-level="2"><a href="#hacking-on-liquidhaskell" class="nav-link">Hacking on LiquidHaskell</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#pull-requests" class="nav-link">Pull requests</a>
+            <li class="nav-item" data-level="2"><a href="#reporting-a-bug" class="nav-link">Reporting a bug</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#your-first-pull-request" class="nav-link">Your first Pull Request</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ask-for-help" class="nav-link">Ask for help</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -110,17 +126,27 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="contributions">Contributions</h1>
-<p>We are excited for you to try LH!</p>
-<h2 id="community">Community</h2>
-<p>If you have any questions</p>
+<h1 id="get-involved">Get involved<a class="headerlink" href="#get-involved" title="Permanent link">&para;</a></h1>
+<p>We are excited for you to try LH! </p>
+<p>In this section you can find instructions on how to submit your first PR as well as practical instructions
+on how develop LiquidHaskell.</p>
+<h2 id="hacking-on-liquidhaskell">Hacking on LiquidHaskell<a class="headerlink" href="#hacking-on-liquidhaskell" title="Permanent link">&para;</a></h2>
+<p>If you want to extend LH to fix a bug or provide a new feature, you might be interested in reading
+our <a href="../develop/">Developer's guide</a>.</p>
+<h2 id="reporting-a-bug">Reporting a bug<a class="headerlink" href="#reporting-a-bug" title="Permanent link">&para;</a></h2>
+<p>If something doesn't work as it should, please consider opening a <a href="https://github.com/ucsd-progsys/liquidhaskell/issues">github issue</a>
+to let us know. If possible, try to:</p>
 <ul>
-<li>Join the Liquid Haskell <a href="https://join.slack.com/t/liquidhaskell/shared_invite/enQtMjY4MTk3NDkwODE3LTFmZGFkNGEzYWRkNDJmZDQ0ZGU1MzBiZWZiZDhhNmY3YTJiMjUzYTRlNjMyZDk1NDU3ZGIxYzhlOTIzN2UxNWE">slack channel</a></li>
-<li>Mail the <a href="https://groups.google.com/forum/#!forum/liquidhaskell">users mailing list</a></li>
-<li>Create a <a href="https://github.com/ucsd-progsys/liquidhaskell/issues">github issue</a></li>
+<li>Try to use a descriptive title;</li>
+<li>State as clearly as possible what is the problem you are facing;</li>
+<li>Provide a small Haskell file producing the issue;</li>
+<li>Write down the expected behaviour vs the actual behaviour;</li>
+<li>If possible, let us know if you have used the <a href="../plugin/">plugin</a> or the <a href="../legacy/">executable</a> and
+  which <em>GHC version</em> you are using.</li>
 </ul>
-<h2 id="pull-requests">Pull requests</h2>
-<p>We are thrilled to get PRs!</p>
+<h2 id="your-first-pull-request">Your first Pull Request<a class="headerlink" href="#your-first-pull-request" title="Permanent link">&para;</a></h2>
+<p>We are thrilled to get PRs! Please follow these guidelines, as doing so will increase the chances of 
+having your PR accepted:</p>
 <ul>
 <li>The main LH repo <a href="https://github.com/ucsd-progsys/liquidhaskell">lives here</a></li>
 <li>Please create pull requests against the <code>develop</code> branch.</li>
@@ -128,7 +154,9 @@
 <li>e.g. show new features that that are supported or how it fixes some previous issue</li>
 <li>If the PR adds a <code>LIQUID</code> pragma or option, please also add documentation </li>
 <li>e.g. in <a href="../options/">options.md</a> or <a href="../specifications/">specifications.md</a> </li>
-</ul></div>
+</ul>
+<h2 id="ask-for-help">Ask for help<a class="headerlink" href="#ask-for-help" title="Permanent link">&para;</a></h2>
+<p>If you have further questions or you just need help, you can always reach out to the <a href="../community/">community</a>.</p></div>
             </div>
         </div>
 

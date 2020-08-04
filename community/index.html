@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Install - LiquidHaskell</title>
+        <title>Community - LiquidHaskell</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -36,8 +36,8 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Install</a>
+                            <li class="navitem">
+                                <a href="../plugin/" class="nav-link">Install</a>
                             </li>
                             <li class="navitem">
                                 <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Play</a>
@@ -73,16 +73,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../options/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -101,28 +91,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#installing-and-running-liquidhaskell" class="nav-link">Installing and Running LiquidHaskell</a>
+            <li class="nav-item" data-level="1"><a href="#community" class="nav-link">Community</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#benefits" class="nav-link">Benefits</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#external-software-requirements" class="nav-link">External software requirements</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#getting-started" class="nav-link">Getting started</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#editor-support" class="nav-link">Editor Support</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -130,38 +100,14 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="installing-and-running-liquidhaskell">Installing and Running LiquidHaskell<a class="headerlink" href="#installing-and-running-liquidhaskell" title="Permanent link">&para;</a></h1>
-<p>As of LH version 0.8.10, mirroring GHC-8.10, LiquidHaskell 
-is available as a <a href="https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/extending_ghc.html">GHC compiler plugin</a>. </p>
-<p>(We still offer the old <a href="../legacy/">legacy executable</a>, to give users enough time to complete migrations
-to the new system.)</p>
-<h2 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h2>
-<p>As a GHC plugin, you simply specify <code>liquidhaskell</code> as one of the dependencies 
-of your project in the cabal file, after which <code>stack</code> or <code>cabal</code> automatically:</p>
-<ol>
-<li>Install Liquidhaskell </li>
-<li>Tells GHC to use LH during compilation</li>
-<li>Displays refinement type errors during compilation</li>
-<li>Reuses <code>ghci</code>, <code>ghcid</code> and all GHC compatible tooling for your favorite editor. </li>
-</ol>
-<p><strong>We recommend switching to the new compiler plugin as soon as possible.</strong></p>
-<h2 id="external-software-requirements">External software requirements<a class="headerlink" href="#external-software-requirements" title="Permanent link">&para;</a></h2>
-<p>Make sure all the required <a href="../install/">external software</a> software is installed before proceeding.</p>
-<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>We offer a detailed "getting started" walkthrough in the form of a Haskell module with a lot of comments,
-written in prose. You can read it <a href="https://github.com/ucsd-progsys/liquidhaskell/tree/develop/src/Language/Haskell/Liquid/GHC/Plugin/Tutorial.hs">here</a>.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<p>The following concrete examples show the source plugin in action:</p>
+<h1 id="community">Community<a class="headerlink" href="#community" title="Permanent link">&para;</a></h1>
+<p>If you have any questions, you can:</p>
 <ul>
-<li><a href="https://github.com/ucsd-progsys/lh-plugin-demo">Sample package</a></li>
-<li><a href="https://github.com/ucsd-progsys/lh-plugin-demo-client">Sample client package</a></li>
+<li>Join the Liquid Haskell <a href="https://join.slack.com/t/liquidhaskell/shared_invite/enQtMjY4MTk3NDkwODE3LTFmZGFkNGEzYWRkNDJmZDQ0ZGU1MzBiZWZiZDhhNmY3YTJiMjUzYTRlNjMyZDk1NDU3ZGIxYzhlOTIzN2UxNWE">slack channel</a></li>
+<li>Mail the <a href="https://groups.google.com/forum/#!forum/liquidhaskell">users mailing list</a></li>
 </ul>
-<p>You can use the <code>.cabal</code>, <code>stack.yaml</code> and <code>cabal.project</code> files in the 
-sample packages to see how to write the equivalent files for your own 
-codebase.</p>
-<h2 id="editor-support">Editor Support<a class="headerlink" href="#editor-support" title="Permanent link">&para;</a></h2>
-<p>One of the added benefit of the plugin is that you get to automatically reuse <strong>all</strong> ghc-based support
-for your editor as is. Again, the sample packages include examples for <code>vscode</code>, <code>vim</code> and <code>emacs</code>.</p></div>
+<p>Alternatively, feel free to drop <a href="https://github.com/ranjitjhala">Ranjit Jhala</a> or
+<a href="https://github.com/nikivazou">Niki Vazou</a> an email.</p></div>
             </div>
         </div>
 

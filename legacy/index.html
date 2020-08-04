@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Legacy - LiquidHaskell</title>
+        <title>Installing the Legacy LiquidHaskell Executable - LiquidHaskell</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -34,28 +34,36 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Online</a>
+                                <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="nav-link">Blog</a>
+                                <a href="../plugin/" class="nav-link">Install</a>
                             </li>
                             <li class="navitem">
-                                <a href="../plugin/" class="nav-link">Plugin</a>
+                                <a href="https://liquid-demo.programming.systems/index.html" class="nav-link">Play</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Legacy</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Learn <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://ucsd-progsys.github.io/liquidhaskell-blog/" class="dropdown-item">Blog</a>
+</li>
+                                    
+<li>
+    <a href="../options/" class="dropdown-item">Options</a>
+</li>
+                                    
+<li>
+    <a href="../specifications/" class="dropdown-item">Specifications</a>
+</li>
+                                </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../options/" class="nav-link">Options</a>
+                                <a href="../contributing/" class="nav-link">Get Involved</a>
                             </li>
                             <li class="navitem">
-                                <a href="../specifications/" class="nav-link">Specifications</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../contributing/" class="nav-link">Community</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../develop/" class="nav-link">Development</a>
+                                <a href="https://github.com/ucsd-progsys/liquidhaskell" class="nav-link"><i class='fa fa-github'></i>&nbsp;Github</a>
                             </li>
                         </ul>
 
@@ -65,16 +73,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../plugin/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../options/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -93,13 +91,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#installing-and-running-the-legacy-liquidhaskell-executable" class="nav-link">Installing and Running the Legacy LiquidHaskell Executable</a>
+            <li class="nav-item" data-level="1"><a href="#installing-the-legacy-liquidhaskell-executable" class="nav-link">Installing the Legacy LiquidHaskell Executable</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#install" class="nav-link">Install</a>
+            <li class="nav-item" data-level="2"><a href="#external-software-requirements" class="nav-link">External software requirements</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#running-the-legacy-binary" class="nav-link">Running the Legacy Binary</a>
+            <li class="nav-item" data-level="2"><a href="#installation-options" class="nav-link">Installation options</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -114,91 +112,47 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="installing-and-running-the-legacy-liquidhaskell-executable">Installing and Running the Legacy LiquidHaskell Executable</h1>
+<h1 id="installing-the-legacy-liquidhaskell-executable">Installing the Legacy LiquidHaskell Executable<a class="headerlink" href="#installing-the-legacy-liquidhaskell-executable" title="Permanent link">&para;</a></h1>
 <p><strong>We strongly recommend</strong> that you use the <a href="../plugin/">GHC Plugin</a> 
-available in version 0.8.10 onwards. The legacy executable has been 
-kept around for backwards compatibility but will eventually be deprecated.</p>
-<h2 id="install">Install</h2>
-<p>To run the legacy LiquidHaskell executable you need to install:</p>
-<ol>
-<li>An SMT solver</li>
-<li>LH itself as a standalone binary</li>
-</ol>
+available in version 0.8.10 onwards, as the legacy executable is deprecated and has been 
+kept around for backwards compatibility. It will eventually be removed from future LH releases.</p>
+<h2 id="external-software-requirements">External software requirements<a class="headerlink" href="#external-software-requirements" title="Permanent link">&para;</a></h2>
+<p>Make sure all the required <a href="../install/">external software</a> software is installed before proceeding.</p>
+<h2 id="installation-options">Installation options<a class="headerlink" href="#installation-options" title="Permanent link">&para;</a></h2>
 <p>You can install the <code>liquid</code> binary via package manager <em>or</em> source.</p>
-<h3 id="1-install-smt-solver">1. Install SMT Solver</h3>
-<p>Download and install <em>at least one</em> of</p>
-<ul>
-<li><a href="https://github.com/Z3Prover/z3/releases">Z3</a> or <a href="https://www.microsoft.com/en-us/download/details.aspx?id=52270">Microsoft official binary</a></li>
-<li><a href="http://cvc4.cs.stanford.edu/web/">CVC4</a></li>
-<li><a href="http://mathsat.fbk.eu/download.html">MathSat</a></li>
-</ul>
-<p><strong>Note:</strong> The SMT solver binary should be on your <code>PATH</code>; LiquidHaskell will execute it as a child process.</p>
-<h3 id="2-install-legacy-binary">2. Install Legacy Binary</h3>
-<p>You can install the <code>liquid</code> binary via package manager <em>or</em> source.</p>
-<h4 id="via-package-manager">Via Package Manager</h4>
-<p>The <code>liquid</code> executable is provided as part of a standalone,
-battery-included package called <code>liquid-platform</code>.</p>
+<h3 id="via-package-manager">Via Package Manager<a class="headerlink" href="#via-package-manager" title="Permanent link">&para;</a></h3>
 <p>Simply do:</p>
-<pre><code>cabal install liquid-platform
+<pre><code>cabal install liquidhaskell
 </code></pre>
 <p>We are working to put <code>liquid</code> on <code>stackage</code>.</p>
 <p>You can designate a specific version of LiquidHaskell to
 ensure that the correct GHC version is in the environment. 
-As an example,</p>
-<pre><code>cabal install liquid-platform-0.9.0.0
+For example:</p>
+<pre><code>cabal install liquidhaskell-0.8.10.1
 </code></pre>
-<h4 id="build-from-source">Build from Source</h4>
+<h3 id="build-from-source">Build from Source<a class="headerlink" href="#build-from-source" title="Permanent link">&para;</a></h3>
 <p>If you want the most recent version, you can build from source as follows,
 either using <code>stack</code> (recommended) or <code>cabal</code>. In either case:</p>
 <ol>
 <li>
-<p><em>recursively</em> <code>clone</code> the repo </p>
-<p>git clone --recursive https://github.com/ucsd-progsys/liquidhaskell.git
-cd liquidhaskell</p>
+<p><em>recursively</em> <code>clone</code> the repo:</p>
+<p><code>git clone --recursive https://github.com/ucsd-progsys/liquidhaskell.git</code></p>
 </li>
 <li>
-<p><code>build</code> the package with <a href="https://github.com/commercialhaskell/stack/blob/master/doc/install_and_upgrade.md">stack</a> </p>
-<p>stack install liquid-platform</p>
+<p>Go inside the <code>liquidhaskell</code> directory:</p>
+<p><code>cd liquidhaskell</code></p>
 </li>
 <li>
-<p>or with <a href="https://www.haskell.org/cabal/">cabal</a> </p>
-<p>cabal v2-build liquid-platform</p>
+<p>Build the package:</p>
+<p>a. with <a href="https://github.com/commercialhaskell/stack/blob/master/doc/install_and_upgrade.md">stack</a>:</p>
+<pre><code>stack install liquidhaskell
+</code></pre>
+<p>b. or with <a href="https://www.haskell.org/cabal/">cabal</a>:</p>
+<pre><code>cabal v2-build liquidhaskell
+</code></pre>
 </li>
 </ol>
-<h4 id="a-note-on-the-ghc_package_path">A note on the GHC_PACKAGE_PATH</h4>
-<p>To work correctly <code>liquid</code> requires access to auxiliary packages
-installed as part of the executable. Therefore, you might need to 
-extend your <code>$GHC_PACKAGE_PATH</code> to have it point to the right location(s). </p>
-<p>Typically the easiest way is to call <code>stack path</code>, which will print 
-a lot of diagnostic output. From that it should be suffient to copy 
-the paths printed as part of <code>ghc-package-path: &lt;some-paths&gt;</code> and 
-extend the <code>GHC_PACKAGE_PATH</code> this way (typically editing your <code>.bashrc</code> 
-to make the changes permanent):</p>
-<pre><code>export GHC_PACKAGE_PATH=$GHC_PACKAGE_PATH:&lt;some-paths&gt;
-</code></pre>
-
-<p>After that, running <code>liquid</code> anywhere from the filesystem should work.</p>
-<h3 id="troubleshooting">Troubleshooting</h3>
-<ol>
-<li>
-<p>If you're on Windows, please make sure the SMT solver is installed
-    in the <strong>same</strong> directory as LiquidHaskell itself (i.e. wherever
-    <code>cabal</code> or <code>stack</code> puts your binaries). That is, do:</p>
-<p><code>which liquid</code></p>
-<p>and make sure that <code>z3</code> or <code>cvc4</code> or <code>mathsat</code> are in the <code>PATH</code>
-returned by the above.</p>
-</li>
-<li>
-<p>If you installed via <code>stack</code> and are experiencing path related woes, try:</p>
-<p><code>stack exec -- liquid path/to/file.hs</code></p>
-</li>
-</ol>
-<h2 id="running-the-legacy-binary">Running the Legacy Binary</h2>
-<p>To verify a file called <code>foo.hs</code> at type</p>
-<pre><code class="bash">$ liquid foo.hs
-</code></pre>
-
-<h2 id="running-in-ghci">Running in GHCi</h2>
+<h2 id="running-in-ghci">Running in GHCi<a class="headerlink" href="#running-in-ghci" title="Permanent link">&para;</a></h2>
 <p>To run inside <code>ghci</code> e.g. when developing do:</p>
 <pre><code class="bash">$ stack ghci liquidhaskell
 ghci&gt; :m +Language.Haskell.Liquid.Liquid

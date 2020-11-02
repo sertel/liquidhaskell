@@ -268,8 +268,59 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="writing-specifications">Writing Specifications<a class="headerlink" href="#writing-specifications" title="Permanent link">&para;</a></h1>
-<p>This section documents how you can actually annotate new or existing code with refinement types, leveraging
-the full power of LiquidHaskell.</p>
+<p>This section documents how you can actually annotate new or existing code with
+refinement types, leveraging the full power of LiquidHaskell. There are a lot
+of different ways to annotate your code, and so we've included a brief summary
+of each here.</p>
+<ul>
+<li><code>{-@ inline &lt;binding-name&gt; @-}</code> copies a Haskell definition to the refinement logic.
+  (<a href="#inlines">Jump to: Inlines</a>)<ul>
+<li>All parts of the definition must already be available to the refinement logic.</li>
+<li>The definition cannot be recursive.</li>
+</ul>
+</li>
+<li><code>{-@ measure &lt;function-name&gt;[ &lt;refinement-type&gt;] @-}</code> copies a Haskell function to the refinement logic,
+  adds an inferred refinement type to the constructor of the function's first argument,
+  and emits an inferred global invariant related to the refinement.
+  (<a href="#specifying-measures">Jump to: Measures</a>)<ul>
+<li>All parts of the definition must already be available to the refinement logic.</li>
+<li>The function must have only one argument and it must pattern match on the constructors of the type.</li>
+<li>The function may structurally recurse on the single argument.</li>
+</ul>
+</li>
+<li><code>{-@ reflect &lt;function-name&gt; @-}</code> creates an uninterpreted function of the same name in the refinement logic,
+  copies the implementation to a refinement type alias,
+  and adds a refinement to the type of the uninterpreted function that specifies the type alias as a post-condition.
+  (<a href="http://goto.ucsd.edu/~nvazou/refinement-reflection/refinement-reflection.pdf">See more: Section 2.2 of this paper</a>)<ul>
+<li>All parts of the definition must already be available to the refinement logic.</li>
+<li>The function may be recursive.</li>
+</ul>
+</li>
+<li><code>{-@ type &lt;type-alias-head&gt; = &lt;refinement-type&gt; @-}</code> introduces a type alias that looks like Haskell syntax but can contain refinements and may be parameterized over both types and values.
+  (<a href="#type-aliases">Jump to: Type Aliases</a>)</li>
+<li><code>{-@ predicate .. @-}</code> introduces something like <code>{-@ type .. @-}</code>.
+  (<em>Deprecated, use <code>inline</code> instead</em>, <a href="#predicate-aliases">Jump to: Predicate Aliases</a>)</li>
+<li><code>{-@ invariant &lt;refinement-type&gt; @-}</code> introduces a globally available refinement which may be used by Liquid Haskel, but is not checked.
+  (<em>Unchecked</em>, <em>Deprecated</em>, <a href="#invariants">Jump to: Invariants</a>)</li>
+<li><code>{-@ data &lt;data-type-head&gt;&lt;termination-measure&gt;[ &lt;data-type-body] @-}</code> introduces a refined datatype,
+  and introduces measures for each field of a record datatype.
+  (<a href="http://ucsd-progsys.github.io/liquidhaskell/specifications/#modules-with-code-data">Jump to: Data Refinements</a>)<ul>
+<li>Optionally you may also add refinements to datatype fields.</li>
+<li>Optionally you may also add a termination measure to the datatype.</li>
+</ul>
+</li>
+<li><code>{-@ assume &lt;binding-signature-with-refinement-type&gt; @-}</code> introduces a refinement type for the named Haskell definition.
+  (<em>Unchecked</em>)<ul>
+<li>For a function, the refinements become pre and post conditions for the functions use.</li>
+</ul>
+</li>
+<li><code>{-@ &lt;binding-signature-with-refinement-type&gt; @-}</code> introduces a refinement type for the named Haskell definition.<ul>
+<li>For a function, the refinements become pre and post conditions for the functions use.</li>
+<li>This is probably the most used Liquid Haskell annotation!</li>
+</ul>
+</li>
+</ul>
+<p>The following sections detail more variety for the uses of the above annotations.</p>
 <h2 id="modules-without-code">Modules WITHOUT code<a class="headerlink" href="#modules-without-code" title="Permanent link">&para;</a></h2>
 <p>The following section is slightly different depending on whether you are using the plugin (which you should!)
 or the legacy executable.</p>

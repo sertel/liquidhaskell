@@ -1822,6 +1822,10 @@ makeLexReft old acc (e:es) (e':es')
                 :  [PAtom Eq o' o    | (o,o') <- old]
                 ++ [PAtom Ge o' zero | (_,o') <- old]
     zero = ECon $ I 0
+makeLexReft _ _ [] d@(_:_) 
+  = panic Nothing $ "RefType.makeLexReft on invalid input. Left empty. Right: " ++ show d
+makeLexReft _ _ d@(_:_) []
+  = panic Nothing $ "RefType.makeLexReft on invalid input. Right empty. Left: " ++ show d
 makeLexReft _ _ _ _
   = panic Nothing "RefType.makeLexReft on invalid input"
 
